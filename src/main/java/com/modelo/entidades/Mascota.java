@@ -1,9 +1,15 @@
 package com.modelo.entidades;
 
 public class Mascota {
-  // Por que chuchas esta clase está vacía?
-  bryan mmmv
-  bryan mmmv x2
-  hollaaa
-  dsfsdfsdfsdf
+  
+	private int id;
+
+	private String nombre;
+
+	private Fecha anioNaciomiento;
+
+	private String raza;
+
+	
+
 }
