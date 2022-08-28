@@ -1,4 +1,4 @@
-package Modelo.Entity;
+package com.modelo.entidades;
 
 public class Mascota {
   // Por que chuchas esta clase está vacía?
