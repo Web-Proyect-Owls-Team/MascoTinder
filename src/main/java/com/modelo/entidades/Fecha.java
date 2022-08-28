@@ -30,7 +30,7 @@ public class Fecha {
         this.anio = anio;
     }
 
-    //  Imprimir la fecha
+    //  Imprimir la fecha de nacimiento
    @Override
     public String toString() {
         return dia + "/" + mes + "/" + anio;
