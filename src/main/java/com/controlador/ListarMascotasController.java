@@ -1,3 +1,4 @@
+package com.controlador;
 
 
 import java.io.IOException;
@@ -9,34 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cmc.modelos.JPAMascotaDAO;
-import com.cmc.modelos.JPAPropietarioDAO;
+import com.modelo.jpa.JPAPropietarioDAO;
 
-/**
- * Servlet implementation class ListarMascotasControler
- */
+
 @WebServlet("/ListarMascotasControler")
-public class ListarMascotasControler extends HttpServlet {
+public class ListarMascotasController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ListarMascotasControler() {
-        super();
-        // TODO Auto-generated constructor stub
+
+    public ListarMascotasController() {
+        
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 1.Obtenemos Parametros
