@@ -33,11 +33,11 @@
 			    <label for="txtId">Fecha de Nacimiento</label> <input type="date" name="txtFechaNacimiento" id="txtFechaNacimiento" /> <br> <br>
                 <label for="txtEspecie">Especie</label> 
                 <select name="txtEspecie" id="especie">
-                    <option value="seleccione">Seleccione</option>
-                    <option value="perro">Perro</option>
-                    <option value="gato">Gato</option>
-                    <option value="hammster">Hammster</option>
-                    <option value="ave">Ave</option>
+                    <option value="Seleccione">Seleccione</option>
+                    <option value="Perro">Perro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Hammster">Hammster</option>
+                    <option value="Ave">Ave</option>
                 </select> <br><br>
                 <label for="txtSexo">Sexo</label>
                 <select name="txtSexo" id="sexo">
@@ -46,7 +46,7 @@
                     <option value="Hembra">Hembra</option>
                 </select> <br><br>
                 <label for="txtImagenes">Choose Images</label>
-                <input type="file" name="images" id="fileInput" multiple > <br>|<br>
+                <input type="file" name="txtImagenes" id="fileInput" multiple > <br>|<br>
 				<input type="submit" value="Registrar"/> <br>
 		</form>
 	</div>

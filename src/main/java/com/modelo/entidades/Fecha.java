@@ -1,5 +1,12 @@
-public class Fecha {
-    // Clase que construya una fecha 
+package com.modelo.entidades;
+
+import java.io.Serializable;
+
+public class Fecha implements Serializable{
+	
+    private static final long serialVersionUID = 1L;
+    
+	// Clase que construya una fecha 
     private int dia;
     private int mes;
     private int anio;
@@ -10,6 +17,14 @@ public class Fecha {
         this.anio = anio;
     }
 
+    //Constructor que recibe una fecha en formato String
+    public Fecha(String fecha) {
+        String[] fechaSeparada = fecha.split("-");
+        this.dia = Integer.parseInt(fechaSeparada[0]);
+        this.mes = Integer.parseInt(fechaSeparada[1]);
+        this.anio = Integer.parseInt(fechaSeparada[2]);
+    }
+    
     // Getters y setters
     public int getDia() {
         return dia;
@@ -30,7 +45,7 @@ public class Fecha {
         this.anio = anio;
     }
 
-    //  Imprimir la fecha de nacimiento
+    // Imprimir la fecha de nacimiento
    @Override
     public String toString() {
         return dia + "/" + mes + "/" + anio;
