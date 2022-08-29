@@ -1,12 +1,18 @@
 package com.modelo.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import Modelo.entidades.Persona;
 
 @Entity(name = "Propietario")
 public class Propietario implements Serializable {
@@ -26,6 +32,9 @@ public class Propietario implements Serializable {
 	@Column(name = "pro_clave")
 	private String clave;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mascota")	
+	private List<Mascota> mascotas;
+
 	public Propietario() {
 		
 	}
@@ -69,6 +78,14 @@ public class Propietario implements Serializable {
 		this.clave = clave;
 	}
 	
+	//geter y setter para  mascotas
+	public List<Mascota> getMascotas() {
+		return mascotas;
+	}
+
+	public void setMascotas(List<Mascota> mascotas){
+		this.mascotas = mascotas;
+	}
 	
 	
 }

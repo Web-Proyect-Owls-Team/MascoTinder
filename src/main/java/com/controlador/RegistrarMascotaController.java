@@ -1,12 +1,14 @@
 package com.controlador;
 
-import java.io.File;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.modelo.dao.DAOFactory;
 import com.modelo.entidades.*;
 
 /**
@@ -38,18 +40,22 @@ public class RegistrarMascotaController extends HttpServlet {
 		// 1.- obtener parámetros
 		String nombre = request.getParameter("txtNombre");
 		Fecha fechaNacimiento = new Fecha(request.getParameter("txtFechaNacimiento"));
-		String sexo = request.getParameter("txtSexo");
-		String especie = request.getParameter("txtEspecie");
-		File foto = new File(request.getParameter("txtImagenes"));
+		String sexoS = request.getParameter("txtSexo");
+		String especieS = request.getParameter("txtEspecie");
+		String foto = request.getParameter("txtImagenes");
 
 		// 2.- Llamar al modelo
 		Mascota m = new Mascota();
+		Especie especie = m.convertEspecie(especieS);
+		Sexo  sexo= m.convertSexo(sexoS);
 		m.setNombre(nombre);
-		m.setFechaNac(fechaNacimiento);
+		m.setAnioNaciomiento(fechaNacimiento);
 		m.setSexo(sexo);
 		m.setEspecie(especie);
-		m.setFoto(foto);
-
+		m.setImagen(foto);
+		
+		DAOFactory.getFactory().getMascotaDao().create(m);
+		
 		//Llamar a la vista
 		request.getRequestDispatcher("jsp/listaMascotas.jsp").forward(request, response);
 		

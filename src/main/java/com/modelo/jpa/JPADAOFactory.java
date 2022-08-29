@@ -1,6 +1,7 @@
  package com.modelo.jpa;
 
 import com.modelo.dao.DAOFactory;
+import com.modelo.dao.MascotaDAO;
 import com.modelo.dao.PropietarioDAO;
 
 
@@ -12,6 +13,13 @@ public class JPADAOFactory extends DAOFactory {
 		return new JPAPropietarioDAO();
 	}
 
+	@Override
+	public MascotaDAO getMascotaDao() {
+		
+		return new JPAMascotaDAO();
+	}
+	
+	
 	
 
 
