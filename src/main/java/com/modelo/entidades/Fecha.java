@@ -1,3 +1,4 @@
+package com.modelo.entidades;
 public class Fecha {
     // Clase que construya una fecha 
     private int dia;
@@ -10,6 +11,14 @@ public class Fecha {
         this.anio = anio;
     }
 
+    //Constructor que recibe una fecha en formato String
+    public Fecha(String fecha) {
+        String[] fechaSeparada = fecha.split("/");
+        this.dia = Integer.parseInt(fechaSeparada[0]);
+        this.mes = Integer.parseInt(fechaSeparada[1]);
+        this.anio = Integer.parseInt(fechaSeparada[2]);
+    }
+    
     // Getters y setters
     public int getDia() {
         return dia;
