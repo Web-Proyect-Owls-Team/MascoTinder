@@ -30,7 +30,7 @@ public class Propietario implements Serializable {
 	@Column(name = "pro_clave")
 	private String clave;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mascota")	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "Propietario")	
 	private List<Mascota> mascotas;
 
 	public Propietario() {

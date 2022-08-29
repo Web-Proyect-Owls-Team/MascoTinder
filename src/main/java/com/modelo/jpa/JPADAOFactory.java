@@ -14,14 +14,10 @@ public class JPADAOFactory extends DAOFactory {
 	}
 
 	@Override
-	public MascotaDAO getMascotaDao() {
+	public MascotaDAO getMascotaDAO() {
 		
 		return new JPAMascotaDAO();
 	}
-	
-	
-	
-
 
 
 }

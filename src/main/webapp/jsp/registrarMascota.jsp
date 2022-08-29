@@ -46,7 +46,7 @@
                     <option value="Hembra">Hembra</option>
                 </select> <br><br>
                 <label for="txtImagenes">Choose Images</label>
-                <input type="file" name="images" id="fileInput" multiple > <br>|<br>
+                <input type="file" name="txtImagenes" id="fileInput" multiple > <br>|<br>
 				<input type="submit" value="Registrar"/> <br>
 		</form>
 	</div>

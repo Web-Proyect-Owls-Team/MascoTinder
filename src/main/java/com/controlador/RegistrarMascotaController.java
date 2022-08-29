@@ -54,7 +54,7 @@ public class RegistrarMascotaController extends HttpServlet {
 		m.setEspecie(especie);
 		m.setImagen(foto);
 		
-		DAOFactory.getFactory().getMascotaDao().create(m);
+		DAOFactory.getFactory().getMascotaDAO().create(m);
 		
 		//Llamar a la vista
 		request.getRequestDispatcher("jsp/listaMascotas.jsp").forward(request, response);

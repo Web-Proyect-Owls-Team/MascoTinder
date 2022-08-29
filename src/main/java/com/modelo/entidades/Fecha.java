@@ -1,6 +1,12 @@
 package com.modelo.entidades;
-public class Fecha {
-    // Clase que construya una fecha 
+
+import java.io.Serializable;
+
+public class Fecha implements Serializable{
+	
+    private static final long serialVersionUID = 1L;
+    
+	// Clase que construya una fecha 
     private int dia;
     private int mes;
     private int anio;
@@ -13,7 +19,7 @@ public class Fecha {
 
     //Constructor que recibe una fecha en formato String
     public Fecha(String fecha) {
-        String[] fechaSeparada = fecha.split("/");
+        String[] fechaSeparada = fecha.split("-");
         this.dia = Integer.parseInt(fechaSeparada[0]);
         this.mes = Integer.parseInt(fechaSeparada[1]);
         this.anio = Integer.parseInt(fechaSeparada[2]);

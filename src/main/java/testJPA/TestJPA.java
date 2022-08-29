@@ -1,12 +1,14 @@
 package testJPA;
 
 import com.modelo.dao.DAOFactory;
+import com.modelo.entidades.Mascota;
 import com.modelo.entidades.Propietario;
 
 public class TestJPA {
 
 	public static void main(String[] args) {
-		crearPersona();
+		// crearPersona();
+		crearMascota();
 
 	}
 	
@@ -17,6 +19,13 @@ public class TestJPA {
 		p.setUsuario("danrylusxd");
 		
 		DAOFactory.getFactory().getPropietarioDAO().create(p);
+	}
+	
+	public static void crearMascota() {
+		Mascota m = new Mascota();
+		m.setNombre("Michi");
+		
+		DAOFactory.getFactory().getMascotaDAO().create(m);
 	}
 
 }
