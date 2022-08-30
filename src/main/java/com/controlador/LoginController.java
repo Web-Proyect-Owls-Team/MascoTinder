@@ -45,13 +45,15 @@ public class LoginController extends HttpServlet {
 			// 2.- Verifico que las idenficiaciones correspondne con una persona en la BDD
 
 			Propietario propietarioAutenticado = DAOFactory.getFactory().getPropietarioDAO().autorizarPropietario(usuario, clave);
-
+			
 			if (propietarioAutenticado != null) {
-				
-				// Creamos la sesión
+				System.out.println("El usuario ha sido autenticado");
+				// Session Created
 				HttpSession misession = request.getSession(true);
 				misession.setAttribute("usuario", propietarioAutenticado);
-				request.getRequestDispatcher("listarPersonasController").forward(request, response); // cambiar a ListarMascotasController
+				String idSession = propietarioAutenticado.getId().toString();
+				request.setAttribute("id", idSession);
+				request.getRequestDispatcher("ListarMascotasController").forward(request, response); // cambiar a ListarMascotasController
 			} else {
 				System.out.println("al login");
 				request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
