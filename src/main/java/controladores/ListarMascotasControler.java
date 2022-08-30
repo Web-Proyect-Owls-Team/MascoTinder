@@ -9,8 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< Updated upstream:src/main/java/controladores/ListarMascotasControler.java
 import com.cmc.modelos.JPAMascotaDAO;
 import com.cmc.modelos.JPAPropietarioDAO;
+=======
+import com.modelo.jpa.JPAMascotaDAO;
+import com.modelo.jpa.JPAPropietarioDAO;
+
+>>>>>>> Stashed changes:src/main/java/com/controlador/ListarMascotasController.java
 
 /**
  * Servlet implementation class ListarMascotasControler
