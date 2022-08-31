@@ -32,7 +32,7 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 
 		ArrayList<Mascota> mascotas = new ArrayList<Mascota>();	
 		// Query
-		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.Propietario.id = :propietario_id";
+		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.propietario.id = :propietario_id";
 		Query q = this.em.createQuery(sentenciaJPQL);
 		q.setParameter("propietario_id", idPropietario);
 		List<?> a = q.getResultList();
