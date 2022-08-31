@@ -40,6 +40,7 @@ public class ListarMascotasController extends HttpServlet {
 		// 1. Get Parameters
 				HttpSession misession = request.getSession(true);
 				int idPropietario = Integer.parseInt(misession.getAttribute("id").toString());
+				System.out.println(idPropietario);
 				// 2. Call model
 				ArrayList<Mascota> mascotas = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO().getMascotasByIdPropietario(idPropietario);
 				// 3. Call View
