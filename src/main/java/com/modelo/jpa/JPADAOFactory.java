@@ -2,6 +2,7 @@
 
 import com.modelo.dao.DAOFactory;
 import com.modelo.dao.MascotaDAO;
+import com.modelo.dao.PreferenciaDAO;
 import com.modelo.dao.PropietarioDAO;
 
 
@@ -17,6 +18,11 @@ public class JPADAOFactory extends DAOFactory {
 	public MascotaDAO getMascotaDAO() {
 		
 		return new JPAMascotaDAO();
+	}
+
+	@Override
+	public PreferenciaDAO getPreferenciaDAO() {
+		return new JPAPreferenciaDAO();
 	}
 
 
