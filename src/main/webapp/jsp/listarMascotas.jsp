@@ -12,7 +12,7 @@
 	<%@include file="../templates/banner_interno.html"%>
 	<h1>Mis Mascotas</h1>
 	<div>
-		<a href="#"> Nuevo </a>
+		<a href="RegistrarMascotaController"> Nuevo </a>
 	</div>
 	<div class="wrapper">
 		<table class="table">
