@@ -117,4 +117,12 @@ public class Mascota  implements Serializable{
 		return this.especie;
 	}
 
+	@Override
+	public String toString() {
+		return "Mascota [id=" + id + ", nombre=" + nombre + ", anioNaciomiento=" + anioNaciomiento + ", imagen="
+				+ imagen + ", sexo=" + sexo + ", especie=" + especie + ", Propietario=" + Propietario + "]";
+	}
+	
+	
+
 }

@@ -84,6 +84,12 @@ public class Propietario implements Serializable {
 	public void setMascotas(List<Mascota> mascotas){
 		this.mascotas = mascotas;
 	}
+
+	@Override
+	public String toString() {
+		return "Propietario [id=" + id + ", nombre=" + nombre + ", usuario=" + usuario + ", clave=" + clave
+				+ ", mascotas=" + mascotas + "]";
+	}
 	
 	
 }
