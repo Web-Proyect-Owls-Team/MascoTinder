@@ -59,8 +59,11 @@ public class RegistrarPreferenciaController extends HttpServlet{
 	
 		DAOFactory.getFactory().getPreferenciaDAO().create(preferencia);
 		
-		DAOFactory.getFactory().getMascotaDAO().setPreferencia(preferencia, idMascota);
 		
+		Mascota m = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMascota);
+		m.setPreferencia(preferencia);
+		
+		DAOFactory.getFactory().getMascotaDAO().update(m);
 		
 		request.getRequestDispatcher("jsp/listaMascotas.jsp").forward(request, response);
 	}

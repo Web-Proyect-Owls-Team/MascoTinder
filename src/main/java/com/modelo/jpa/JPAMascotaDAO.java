@@ -44,11 +44,5 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 		return mascotas;
 	}
 
-	@Override
-	public void setPreferencia(Preferencia p, int idMascota) {
-		Mascota m = this.getMascotaByID(idMascota);
-		m.setPreferencia(p);
-		this.update(m);
-	}
 
 }
