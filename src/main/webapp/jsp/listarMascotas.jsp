@@ -27,8 +27,8 @@
 				<tr>
 					<td>${m.id}</td>
 					<td>${m.nombre}</td>
-					<td><a href="#">
-							Actualizar </a> | <a
+					<td><a href="RegistrarPreferenciaController?idMascota=${m.id}">
+							Preferences </a> | <a
 						href="#"> Eliminar </a></td>
 				</tr>
 			</c:forEach>

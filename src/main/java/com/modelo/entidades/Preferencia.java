@@ -2,14 +2,15 @@ package com.modelo.entidades;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity(name = "Preferencia")
-
 public class Preferencia implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -29,6 +30,9 @@ public class Preferencia implements Serializable{
 	
 	@Column(name = "pre_especie")
 	private Especie especie;
+	
+	@OneToOne( cascade = CascadeType.ALL, mappedBy = "preferencia")
+    private Mascota mascota;
 
 	public Preferencia() {
 		super();

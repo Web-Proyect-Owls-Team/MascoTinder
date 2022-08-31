@@ -30,7 +30,13 @@
 		<h1>Registrar Preferencias</h1>
 
 		<form method="post" action="RegistrarPreferenciaController">
-			
+
+				<input type="hidden" name="idMascota" value="${mascota.id }">
+		
+				<label> Nombre </label>
+				<input type="text" name="txtNombre" value="${mascota.nombre }">
+
+				
 			    <label for="txtId">Edad Minima</label> <input type="text" name="txtEdadMinima" id="txtEdadMinima" /> <br><br>
 			    <label for="txtId">Edad Máxima</label> <input type="text" name="txtEdadMaxima" id="txtEdadMaxima" /> <br> <br>
                 <label for="txtEspecie">Especie</label> 
