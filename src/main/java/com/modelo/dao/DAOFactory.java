@@ -12,7 +12,6 @@ public abstract class DAOFactory {
 
     public abstract PropietarioDAO getPropietarioDAO();
     public abstract  MascotaDAO getMascotaDAO();
-
-
+    public abstract PreferenciaDAO getPreferenciaDAO();
 
 }
