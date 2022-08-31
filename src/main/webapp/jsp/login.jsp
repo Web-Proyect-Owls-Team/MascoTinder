@@ -39,7 +39,7 @@
 				</fieldset>
 			</form>
 			
-			<br><a href="RegistrarMascotaController">¿Nuevo en Mascotinder? Regístrate aquí</a>
+			<br><a href="RegistrarPropietarioController">¿Nuevo en Mascotinder? Regístrate aquí</a>
 		</div>
 
 	</div>

@@ -21,7 +21,7 @@
 
 	<%@include file="../templates/banner_interno.html"%>
 	<div>
-		<a href="LoginController">Volver al Login</a>
+		<a href="ListarMascotasController">Volver a Lista de Mascotas</a>
 	</div>
 
 	<div class="wrapper">
