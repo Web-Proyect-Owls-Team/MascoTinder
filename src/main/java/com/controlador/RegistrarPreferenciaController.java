@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.modelo.dao.DAOFactory;
 import com.modelo.entidades.Especie;
-import com.modelo.entidades.Fecha;
 import com.modelo.entidades.Mascota;
 import com.modelo.entidades.Preferencia;
 import com.modelo.entidades.Sexo;
@@ -26,6 +25,9 @@ public class RegistrarPreferenciaController extends HttpServlet{
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int idMascota = Integer.parseInt(request.getParameter("idMascota"));
+		Mascota mascota = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMascota);
+		request.setAttribute("mascota", mascota);
 		request.getRequestDispatcher("jsp/registrarPreferencia.jsp").forward(request, response);
 	}
 	
@@ -36,7 +38,7 @@ public class RegistrarPreferenciaController extends HttpServlet{
 		String auxEdadMaxima = request.getParameter("txtEdadMaxima");
 		String sexoS = request.getParameter("txtSexo");
 		String especieS = request.getParameter("txtEspecie");
-		
+		int idMascota = Integer.parseInt(request.getParameter("idMascota"));
 		
 		//Tranformar los valores de String a Int
 		
@@ -53,7 +55,11 @@ public class RegistrarPreferenciaController extends HttpServlet{
 		preferencia.setEspecie(especie);
 		preferencia.setSexo(sexo);
 		
+		
+	
 		DAOFactory.getFactory().getPreferenciaDAO().create(preferencia);
+		
+		DAOFactory.getFactory().getMascotaDAO().setPreferencia(preferencia, idMascota);
 		
 		
 		request.getRequestDispatcher("jsp/listaMascotas.jsp").forward(request, response);

@@ -10,7 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity(name = "Mascota")
 public class Mascota  implements Serializable{
@@ -38,6 +40,9 @@ public class Mascota  implements Serializable{
 	
 	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Propietario Propietario;
+	
+	@OneToOne @JoinColumn
+    private Preferencia preferencia;
 	
 	//Constructor sin parametros
 	public Mascota() {
@@ -92,6 +97,16 @@ public class Mascota  implements Serializable{
 		this.imagen = new File(imagen);
 	}
 	
+	
+	
+	public Preferencia getPreferencia() {
+		return preferencia;
+	}
+
+	public void setPreferencia(Preferencia preferencia) {
+		this.preferencia = preferencia;
+	}
+
 	//Metodo que convierte un string a un enum
 	public Sexo convertSexo(String sexo){
 		if(sexo.equals("Macho")){
