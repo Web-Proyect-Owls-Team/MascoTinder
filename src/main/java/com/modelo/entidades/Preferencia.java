@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity(name = "Preferencia")
@@ -26,19 +27,19 @@ public class Preferencia implements Serializable{
 	private int edadMaxima;
 	
 	@Column(name = "pre_sexo")
-	private Sexo sexo;
+	private String sexo;
 	
 	@Column(name = "pre_especie")
-	private Especie especie;
+	private String especie;
 	
-	@OneToOne( cascade = CascadeType.ALL, mappedBy = "preferencia")
+	@OneToOne( cascade = CascadeType.ALL, mappedBy = "preferencia") @JoinColumn
     private Mascota mascota;
 
 	public Preferencia() {
 		super();
 	}
 
-	public Preferencia(int id, int edadMinima, int edadMaxima, Sexo sexo, Especie especie) {
+	public Preferencia(int id, int edadMinima, int edadMaxima, String sexo, String especie) {
 		super();
 		this.id = id;
 		this.edadMinima = edadMinima;
@@ -71,46 +72,21 @@ public class Preferencia implements Serializable{
 		this.edadMaxima = edadMaxima;
 	}
 
-	public Sexo getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(Sexo sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
-	public Especie getEspecie() {
+	public String getEspecie() {
 		return especie;
 	}
 
-	public void setEspecie(Especie especie) {
+	public void setEspecie(String especie) {
 		this.especie = especie;
 	}
 	
-	
-	//Metodo que convierte un string a un enum
-		public Sexo convertSexo(String sexo){
-			if(sexo.equals("Macho")){
-				this.sexo = Sexo.Macho;
-			}else{
-				this.sexo = Sexo.Hembra;
-			}
-			return this.sexo;
-		}
-
-		public Especie convertEspecie(String especie) {
-			if(especie.equals("Perro")){
-				this.especie = Especie.Perro;
-			}else if(especie.equals("Gato")){
-				this.especie = Especie.Gato;
-			}else if(especie.equals("Kanguro")){
-				this.especie = Especie.Kanguro;
-			}else if(especie.equals("Ave")){
-				this.especie = Especie.Ave;
-			}else{
-				this.especie = Especie.Otro;
-			}
-			return this.especie;
-		}
 	
 }
