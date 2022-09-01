@@ -52,8 +52,9 @@ public class LoginController extends HttpServlet {
 				HttpSession misession = request.getSession(true);
 				misession.setAttribute("usuario", propietarioAutenticado);
 				String idSession = propietarioAutenticado.getId().toString();
-				request.setAttribute("id", idSession);
-				request.getRequestDispatcher("ListarMascotasController").forward(request, response); // cambiar a ListarMascotasController
+				misession.setAttribute("id", idSession);
+				
+				request.getRequestDispatcher("ListarMascotasController").forward(request, response); 
 			} else {
 				System.out.println("al login");
 				request.getRequestDispatcher("jsp/login.jsp").forward(request, response);

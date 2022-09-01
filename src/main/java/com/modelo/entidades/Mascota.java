@@ -10,7 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity(name = "Mascota")
 public class Mascota  implements Serializable{
@@ -36,8 +38,11 @@ public class Mascota  implements Serializable{
 	@Column(name = "mas_especie")
 	private Especie especie;
 	
-	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Propietario Propietario;
+	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)  
+	private Propietario propietario;
+	
+	@OneToOne @JoinColumn
+    private Preferencia preferencia;
 	
 	//Constructor sin parametros
 	public Mascota() {
@@ -92,6 +97,18 @@ public class Mascota  implements Serializable{
 		this.imagen = new File(imagen);
 	}
 	
+	public Propietario getPropietario() {
+		return this.propietario;
+	}
+	
+	public Preferencia getPreferencia() {
+		return preferencia;
+	}
+
+	public void setPreferencia(Preferencia preferencia) {
+		this.preferencia = preferencia;
+	}
+
 	//Metodo que convierte un string a un enum
 	public Sexo convertSexo(String sexo){
 		if(sexo.equals("Macho")){
@@ -120,7 +137,7 @@ public class Mascota  implements Serializable{
 	@Override
 	public String toString() {
 		return "Mascota [id=" + id + ", nombre=" + nombre + ", anioNaciomiento=" + anioNaciomiento + ", imagen="
-				+ imagen + ", sexo=" + sexo + ", especie=" + especie + ", Propietario=" + Propietario + "]";
+				+ imagen + ", sexo=" + sexo + ", especie=" + especie + ", Propietario=" + propietario + "]";
 	}
 	
 	

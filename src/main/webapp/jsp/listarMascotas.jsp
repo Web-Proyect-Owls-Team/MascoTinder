@@ -12,7 +12,7 @@
 	<%@include file="../templates/banner_interno.html"%>
 	<h1>Mis Mascotas</h1>
 	<div>
-		<a href="#"> Nuevo </a>
+		<a href="RegistrarMascotaController"> Nuevo </a>
 	</div>
 	<div class="wrapper">
 		<table class="table">
@@ -27,8 +27,8 @@
 				<tr>
 					<td>${m.id}</td>
 					<td>${m.nombre}</td>
-					<td><a href="#">
-							Actualizar </a> | <a
+					<td><a href="RegistrarPreferenciaController?idMascota=${m.id}">
+							Preferences </a> | <a
 						href="#"> Eliminar </a></td>
 				</tr>
 			</c:forEach>

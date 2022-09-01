@@ -3,9 +3,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
+import javax.servlet.http.HttpSession;
 
 import com.modelo.dao.MascotaDAO;
 import com.modelo.entidades.Mascota;
+import com.modelo.entidades.Preferencia;
 
 public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements MascotaDAO{
 
@@ -15,7 +17,12 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 
 	@Override
 	public Mascota getMascotaByID(int id) {
-		Mascota mascota = new Mascota();
+		// Considera el verificar tambien el id del usuario para evitar traer cualquier mascota si se modifica el html
+		Mascota mascota = null;
+		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.id = :id";
+		Query q = this.em.createQuery(sentenciaJPQL);
+		q.setParameter("id", id);
+		mascota = (Mascota) q.getSingleResult();
 		return mascota;
 	}
 
@@ -25,7 +32,7 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 
 		ArrayList<Mascota> mascotas = new ArrayList<Mascota>();	
 		// Query
-		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.Propietario.id = :propietario_id";
+		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.propietario.id = :propietario_id";
 		Query q = this.em.createQuery(sentenciaJPQL);
 		q.setParameter("propietario_id", idPropietario);
 		List<?> a = q.getResultList();
@@ -36,5 +43,6 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 		}
 		return mascotas;
 	}
+
 
 }
