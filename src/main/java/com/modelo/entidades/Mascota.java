@@ -21,24 +21,24 @@ public class Mascota  implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	@Column(name = "mas_nombre")
 	private String nombre;
 
-	@Column(name = "mas_anioNaciomiento")
-	private Fecha anioNaciomiento;
+	@Column(name = "mas_edad")
+	private int edad;
 
 	@Column(name = "mas_imagene")
-	private File imagen;
+	private String imagen;
 	
 	@Column(name = "mas_sexo")
-	private Sexo sexo;
+	private String sexo;
 	
 	@Column(name = "mas_especie")
-	private Especie especie;
+	private String especie;
 	
-	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)  
+	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
 	private Propietario propietario;
 	
 	@OneToOne @JoinColumn
@@ -50,13 +50,13 @@ public class Mascota  implements Serializable{
 	}
 
 	//Constructor con parametros
-	public Mascota(int id, String nombre, Fecha anioNaciomiento, Sexo sexo, Especie especie, String imagen) {
+	public Mascota(int id, String nombre, int edad, String sexo, String especie, String imagen) {
 		this.id = id;
 		this.nombre = nombre;
-		this.anioNaciomiento = anioNaciomiento;
+		this.edad = edad;
 		this.sexo = sexo;
 		this.especie = especie;
-		this.imagen = new File(imagen);
+		this.imagen = imagen;
 	}
 	
 	//Getters y Setters
@@ -72,33 +72,36 @@ public class Mascota  implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Fecha getAnioNaciomiento() {
-		return anioNaciomiento;
+	public int edad() {
+		return this.edad;
 	}
-	public void setAnioNaciomiento(Fecha anioNaciomiento) {
-		this.anioNaciomiento = anioNaciomiento;
+	public void edad(int edad) {
+		this.edad = edad;
 	}
-	public Sexo getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(Sexo sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public Especie getEspecie() {
+	public String getEspecie() {
 		return especie;
 	}
-	public void setEspecie(Especie especie) {
+	public void setEspecie(String especie) {
 		this.especie = especie;
 	}
-	public File getImagen() {
+	public String getImagen() {
 		return imagen;
 	}
 	public void setImagen(String imagen) {
-		this.imagen = new File(imagen);
+		this.imagen = imagen;
 	}
 	
 	public Propietario getPropietario() {
 		return this.propietario;
+	}
+	public void setPropietario(Propietario propietario) {
+		this.propietario=propietario;
 	}
 	
 	public Preferencia getPreferencia() {
@@ -109,34 +112,9 @@ public class Mascota  implements Serializable{
 		this.preferencia = preferencia;
 	}
 
-	//Metodo que convierte un string a un enum
-	public Sexo convertSexo(String sexo){
-		if(sexo.equals("Macho")){
-			this.sexo = Sexo.Macho;
-		}else{
-			this.sexo = Sexo.Hembra;
-		}
-		return this.sexo;
-	}
-
-	public Especie convertEspecie(String especie) {
-		if(especie.equals("Perro")){
-			this.especie = Especie.Perro;
-		}else if(especie.equals("Gato")){
-			this.especie = Especie.Gato;
-		}else if(especie.equals("Kanguro")){
-			this.especie = Especie.Kanguro;
-		}else if(especie.equals("Ave")){
-			this.especie = Especie.Ave;
-		}else{
-			this.especie = Especie.Otro;
-		}
-		return this.especie;
-	}
-
 	@Override
 	public String toString() {
-		return "Mascota [id=" + id + ", nombre=" + nombre + ", anioNaciomiento=" + anioNaciomiento + ", imagen="
+		return "Mascota [id=" + id + ", nombre=" + nombre + ", anioNaciomiento=" + edad + ", imagen="
 				+ imagen + ", sexo=" + sexo + ", especie=" + especie + ", Propietario=" + propietario + "]";
 	}
 	

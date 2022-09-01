@@ -45,6 +45,7 @@ public class LoginController extends HttpServlet {
 			// 2.- Verifico que las idenficiaciones correspondne con una persona en la BDD
 
 			Propietario propietarioAutenticado = DAOFactory.getFactory().getPropietarioDAO().autorizarPropietario(usuario, clave);
+			System.out.println("Usuario no encontrado");
 			
 			if (propietarioAutenticado != null) {
 				System.out.println("El usuario ha sido autenticado");
