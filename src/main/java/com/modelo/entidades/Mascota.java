@@ -38,8 +38,8 @@ public class Mascota  implements Serializable{
 	@Column(name = "mas_especie")
 	private Especie especie;
 	
-	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Propietario Propietario;
+	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)  
+	private Propietario propietario;
 	
 	@OneToOne @JoinColumn
     private Preferencia preferencia;
@@ -97,7 +97,9 @@ public class Mascota  implements Serializable{
 		this.imagen = new File(imagen);
 	}
 	
-	
+	public Propietario getPropietario() {
+		return this.propietario;
+	}
 	
 	public Preferencia getPreferencia() {
 		return preferencia;
@@ -135,7 +137,7 @@ public class Mascota  implements Serializable{
 	@Override
 	public String toString() {
 		return "Mascota [id=" + id + ", nombre=" + nombre + ", anioNaciomiento=" + anioNaciomiento + ", imagen="
-				+ imagen + ", sexo=" + sexo + ", especie=" + especie + ", Propietario=" + Propietario + "]";
+				+ imagen + ", sexo=" + sexo + ", especie=" + especie + ", Propietario=" + propietario + "]";
 	}
 	
 	

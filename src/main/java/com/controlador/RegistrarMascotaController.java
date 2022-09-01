@@ -31,12 +31,20 @@ public class RegistrarMascotaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("jsp/registrarMascota.jsp").forward(request, response);
+		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		procesar(request, response);
+		
+	}
+	
+	
+	public void procesar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1.- obtener parámetros
 		String nombre = request.getParameter("txtNombre");
 		Fecha fechaNacimiento = new Fecha(request.getParameter("txtFechaNacimiento"));
@@ -57,8 +65,7 @@ public class RegistrarMascotaController extends HttpServlet {
 		DAOFactory.getFactory().getMascotaDAO().create(m);
 		
 		//Llamar a la vista
-		request.getRequestDispatcher("jsp/listarMascotas.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("ListarMascotasController").forward(request, response);
 	}
 
 }
