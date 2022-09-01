@@ -28,11 +28,18 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 
 
 	@Override
-	public List<Mascota> getMascotasByIdPropietario(int idPropietario) {
+	public List<Mascota> getMascotasByIdPropietario(int idPropietario, boolean esMiMascota) {
 
 		ArrayList<Mascota> mascotas = new ArrayList<Mascota>();	
 		// Query
-		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.propietario.id = :propietario_id";
+		String sentenciaJPQL;
+		//Si se lista las mascotas del usuario
+		if(esMiMascota == true) {
+			sentenciaJPQL = "SELECT m from Mascota m WHERE m.propietario.id = :propietario_id";
+		} else {
+			//Se listan las mascotas excepto las del usuario.
+			sentenciaJPQL = "SELECT m from Mascota m WHERE m.propietario.id != :propietario_id";
+		}
 		Query q = this.em.createQuery(sentenciaJPQL);
 		q.setParameter("propietario_id", idPropietario);
 		List<?> a = q.getResultList();
@@ -43,6 +50,7 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 		}
 		return mascotas;
 	}
+
 
 
 }

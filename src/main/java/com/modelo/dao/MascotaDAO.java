@@ -10,8 +10,7 @@ public interface MascotaDAO extends GenericDAO<Mascota, Integer>{
 	
 	Mascota getMascotaByID(int id);
 	
-	List<Mascota> getMascotasByIdPropietario(int idPropietario);
-	
+	List<Mascota> getMascotasByIdPropietario(int idPropietario, boolean esMiMascota);
 	
 
 }
