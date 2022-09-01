@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.modelo.dao.DAOFactory;
 import com.modelo.entidades.*;
@@ -47,23 +48,32 @@ public class RegistrarMascotaController extends HttpServlet {
 	public void procesar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1.- obtener parámetros
 		String nombre = request.getParameter("txtNombre");
-		Fecha fechaNacimiento = new Fecha(request.getParameter("txtFechaNacimiento"));
-		String sexoS = request.getParameter("txtSexo");
-		String especieS = request.getParameter("txtEspecie");
+		int fechaNacimiento = Integer.parseInt(request.getParameter("txtFechaNacimiento"));
+		String sexo = request.getParameter("txtSexo");
+		String especie = request.getParameter("txtEspecie");
 		String foto = request.getParameter("txtImagenes");
 
 		// 2.- Llamar al modelo
 		Mascota m = new Mascota();
-		Especie especie = m.convertEspecie(especieS);
-		Sexo  sexo= m.convertSexo(sexoS);
+		
 		m.setNombre(nombre);
-		m.setAnioNaciomiento(fechaNacimiento);
+		m.edad(fechaNacimiento);
 		m.setSexo(sexo);
 		m.setEspecie(especie);
 		m.setImagen(foto);
-		
 		DAOFactory.getFactory().getMascotaDAO().create(m);
+	
 		
+		HttpSession misession = request.getSession(true);
+		int idPropietario = Integer.parseInt(misession.getAttribute("id").toString());
+		
+		Propietario propietario = DAOFactory.getFactory().getPropietarioDAO().getById(idPropietario);
+
+		m.setPropietario(propietario);
+		
+		DAOFactory.getFactory().getMascotaDAO().update(m);
+		
+
 		//Llamar a la vista
 		request.getRequestDispatcher("ListarMascotasController").forward(request, response);
 	}
