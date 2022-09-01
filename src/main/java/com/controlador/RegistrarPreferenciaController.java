@@ -36,8 +36,8 @@ public class RegistrarPreferenciaController extends HttpServlet{
 		//Obtener parámetros
 		String auxEdadMinima = request.getParameter("txtEdadMinima");
 		String auxEdadMaxima = request.getParameter("txtEdadMaxima");
-		String sexoS = request.getParameter("txtSexo");
-		String especieS = request.getParameter("txtEspecie");
+		String sexo = request.getParameter("txtSexo");
+		String especie = request.getParameter("txtEspecie");
 		int idMascota = Integer.parseInt(request.getParameter("idMascota"));
 		
 		//Tranformar los valores de String a Int
@@ -47,8 +47,6 @@ public class RegistrarPreferenciaController extends HttpServlet{
 		
 		//Iniciar el modelo.
 		Preferencia preferencia = new Preferencia();
-		Especie especie = preferencia.convertEspecie(especieS);
-		Sexo  sexo= preferencia.convertSexo(sexoS);
 		
 		preferencia.setEdadMinima(edadMinima);
 		preferencia.setEdadMaxima(edadMaxima);
@@ -65,7 +63,7 @@ public class RegistrarPreferenciaController extends HttpServlet{
 		
 		DAOFactory.getFactory().getMascotaDAO().update(m);
 		
-		request.getRequestDispatcher("jsp/listaMascotas.jsp").forward(request, response);
+		request.getRequestDispatcher("ListarMascotasController").forward(request, response);
 	}
 
 }
