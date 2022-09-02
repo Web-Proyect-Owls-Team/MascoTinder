@@ -14,6 +14,12 @@ import javax.persistence.OneToOne;
 @Entity(name = "Preferencia")
 public class Preferencia implements Serializable{
 
+	@Override
+	public String toString() {
+		return "Preferencia [id=" + id + ", edadMinima=" + edadMinima + ", edadMaxima=" + edadMaxima + ", sexo=" + sexo
+				+ ", especie=" + especie + ", mascota=" + mascota + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id

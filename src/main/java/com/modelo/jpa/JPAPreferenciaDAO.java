@@ -19,21 +19,6 @@ public class JPAPreferenciaDAO extends JPAGenericDAO<Preferencia, Integer> imple
 		return preferencia;
 	}
 
-	@Override
-	public Preferencia getPreferenciaByIDMascota(int idMascota) {
-		// TODO Auto-generated method stub
-		
-		Preferencia preferencia =  null;
-		
-		String sentenciaJPQL = sentenciaJPQL = "SELECT p from Preferencia p WHERE p.mascota.id = :mascota_id";
-		
-		Query q = this.em.createQuery(sentenciaJPQL);
-		q.setParameter("mascota_id", idMascota);
-		
-		preferencia = (Preferencia)q.getSingleResult();
-		
-		return preferencia;
-	}
 
 	
 }

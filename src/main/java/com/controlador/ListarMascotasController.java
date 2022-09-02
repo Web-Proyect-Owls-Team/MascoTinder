@@ -33,6 +33,7 @@ public class ListarMascotasController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		listMascotas(request, response);
+
 	}
 	
 	private void listMascotas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -40,12 +41,14 @@ public class ListarMascotasController extends HttpServlet {
 		// 1. Get Parameters
 				HttpSession misession = request.getSession(true);
 				int idPropietario = Integer.parseInt(misession.getAttribute("id").toString());
-				boolean esMiMascota = true;
 				
 				System.out.println(idPropietario);
 				// 2. Call model
-				ArrayList<Mascota> mascotas = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO().getMascotasByIdPropietario(idPropietario, esMiMascota);
+				ArrayList<Mascota> mascotas = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO().getMascotasByIdPropietario(idPropietario);
 				// 3. Call View
+				
+				
+				
 				misession.setAttribute("misMascotas", mascotas);
 				request.setAttribute("mascotas", mascotas);
 				request.getRequestDispatcher("jsp/listarMascotas.jsp").forward(request, response);
