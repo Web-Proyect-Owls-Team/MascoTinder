@@ -72,10 +72,10 @@ public class Mascota  implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int edad() {
+	public int getEdad() {
 		return this.edad;
 	}
-	public void edad(int edad) {
+	public void setEdad(int edad) {
 		this.edad = edad;
 	}
 	public String getSexo() {

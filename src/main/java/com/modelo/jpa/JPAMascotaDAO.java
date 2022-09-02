@@ -32,7 +32,9 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 
 		ArrayList<Mascota> mascotas = new ArrayList<Mascota>();	
 		// Query
-		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.propietario.id = :propietario_id";
+		
+		//Modelo
+		String sentenciaJPQL= "SELECT m from Mascota m WHERE m.propietario.id = :propietario_id";
 		Query q = this.em.createQuery(sentenciaJPQL);
 		q.setParameter("propietario_id", idPropietario);
 		List<?> a = q.getResultList();
@@ -43,6 +45,25 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 		}
 		return mascotas;
 	}
+
+	@Override
+	public List<Mascota> getProspectosByIdPropietarios(int idPropietarios) {
+		
+		ArrayList<Mascota> mascotasProspecto = new ArrayList<Mascota>();
+		
+		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.propietario.id != : propietario_id";
+		Query q = this.em.createQuery(sentenciaJPQL);
+		q.setParameter("propietario_id", idPropietarios);
+		List<?> aux = q.getResultList();
+		
+		for(int i = 0; i < aux.size(); i++) {
+			
+			Mascota auxMascota = (Mascota) aux.get(i);
+			mascotasProspecto.add(auxMascota);
+		}
+		return mascotasProspecto;
+	}
+
 
 
 }
