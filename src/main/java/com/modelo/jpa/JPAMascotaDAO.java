@@ -17,7 +17,7 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 
 	@Override
 	public Mascota getMascotaByID(int id) {
-		// Considera el verificar tambien el id del usuario para evitar traer cualquier mascota si se modifica el html
+		// Considere el verificar tambien el id del usuario para evitar traer cualquier mascota si se modifica el html
 		Mascota mascota = null;
 		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.id = :id";
 		Query q = this.em.createQuery(sentenciaJPQL);
@@ -29,20 +29,51 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 
 	@Override
 	public List<Mascota> getMascotasByIdPropietario(int idPropietario) {
-
-		ArrayList<Mascota> mascotas = new ArrayList<Mascota>();	
-		// Query
-		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.propietario.id = :propietario_id";
+		
+		String sentenciaJPQL= "SELECT m from Mascota m WHERE m.propietario.id = :id";
 		Query q = this.em.createQuery(sentenciaJPQL);
-		q.setParameter("propietario_id", idPropietario);
-		List<?> a = q.getResultList();
-		// Prepare List
-		for (int i = 0; i < a.size(); i++ ) {
-			Mascota mas = (Mascota) a.get(i);
-			mascotas.add(mas);
+		q.setParameter("id", idPropietario);
+		return listarMascotas(q);
+	
+	}
+
+	@Override
+	public List<Mascota> getProspectos(Mascota m) {
+		
+		int idPropietario = m.getPropietario().getId();
+		int maxAge = m.getPreferencia().getEdadMaxima();
+		int minAge = m.getPreferencia().getEdadMinima();
+		String sex = m.getPreferencia().getSexo();
+		String species = m.getPreferencia().getEspecie();
+		
+		String sentenciaJPQL = "SELECT m from Mascota m WHERE "
+								+ "m.propietario.id != :id AND "
+								+ "m.sexo = :sexo AND "
+								+ "m.especie = :especie AND "
+								+ "m.edad <= :maxEdad AND "
+								+ "m.edad >= :minEdad";
+		
+		Query q = this.em.createQuery(sentenciaJPQL);
+		q.setParameter("id", idPropietario);
+		q.setParameter("sexo", sex);
+		q.setParameter("especie", species);
+		q.setParameter("maxEdad", maxAge);
+		q.setParameter("minEdad", minAge);
+		ArrayList<Mascota> posibleProspectos = (ArrayList<Mascota>) listarMascotas (q);  
+		return posibleProspectos;
+	}
+	
+	
+	private List<Mascota> listarMascotas(Query q) {
+		ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
+		List<?> aux = q.getResultList();
+		for(int i = 0; i < aux.size(); i++) {
+			Mascota auxMascota = (Mascota) aux.get(i);
+			mascotas.add(auxMascota);
 		}
 		return mascotas;
-	}
+	} 
+
 
 
 }

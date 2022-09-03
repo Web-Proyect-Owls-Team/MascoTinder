@@ -34,6 +34,7 @@ public class ListarMascotasController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		listMascotas(request, response);
+
 	}
 	
 	private void listMascotas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -41,12 +42,16 @@ public class ListarMascotasController extends HttpServlet {
 		// 1. Get Parameters
 				HttpSession misession = request.getSession(true);
 				int idPropietario = Integer.parseInt(misession.getAttribute("id").toString());
+				
 				System.out.println(idPropietario);
 				// 2. Call model
 				ArrayList<Mascota> mascotas = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO().getMascotasByIdPropietario(idPropietario);
 				ArrayList<Foto> fotos = (ArrayList<Foto>) DAOFactory.getFactory().getFotoDAO().getFotoByIdMascota(5);
 				
 				// 3. Call View
+				
+				
+				
 				misession.setAttribute("misMascotas", mascotas);
 				request.setAttribute("mascotas", mascotas);
 				request.setAttribute("fotos", fotos);

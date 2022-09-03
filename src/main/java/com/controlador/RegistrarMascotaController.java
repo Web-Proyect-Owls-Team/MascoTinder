@@ -60,7 +60,7 @@ public class RegistrarMascotaController extends HttpServlet {
 		Foto foto1 = new Foto();
 		Foto foto2 = new Foto();
 		m.setNombre(nombre);
-		m.edad(fechaNacimiento);
+		m.setEdad(fechaNacimiento);
 		m.setSexo(sexo);
 		m.setEspecie(especie);
 
