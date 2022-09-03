@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.modelo.dao.DAOFactory;
-import com.modelo.entidades.Especie;
 import com.modelo.entidades.Mascota;
 import com.modelo.entidades.Preferencia;
-import com.modelo.entidades.Sexo;
+
 
 @WebServlet("/RegistrarPreferenciaController")
 public class RegistrarPreferenciaController extends HttpServlet{

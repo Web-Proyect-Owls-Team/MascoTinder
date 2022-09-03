@@ -30,7 +30,7 @@
 		<div class="formContent">
 			<form method="post" action="LoginController">
 				<fieldset>
-					<legend>Log in</legend>
+					<legend>Log s exin</legend>
 					<p>Usuario</p>
 					<input type="text" name="usuario" /><br><br>
 					<p>Contraseña</p>

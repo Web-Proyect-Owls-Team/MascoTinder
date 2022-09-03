@@ -30,7 +30,7 @@
 		<form method="post" action="RegistrarMascotaController">
 			
 			    <label for="txtId">Nombre</label> <input type="nombre" name="txtNombre" id="txtNombre" /> <br><br>
-			    <label for="txtId">Fecha de Nacimiento</label> <input type="number" name="txtFechaNacimiento" id="txtFechaNacimiento" /> <br> <br>
+			    <label for="txtId">Edad</label> <input type="number" name="txtFechaNacimiento" id="txtFechaNacimiento" /> <br> <br>
                 <label for="txtEspecie">Especie</label> 
                 <select name="txtEspecie" id="especie">
                     <option value="Seleccione">Seleccione</option>
@@ -45,12 +45,7 @@
                     <option value="Macho">Macho</option>
                     <option value="Hembra">Hembra</option>
                 </select> <br><br>
-                <label for="txtImagen1">Choose Images</label>
-                <input type="file" name="txtImagen1" id="fileInput" ><br><br>
-                <label for="txtImagen2">Choose Images</label>
-                <input type="file" name="txtImagen2" id="fileInput" > <br><br>
-                <label for="txtImagen3">Choose Images</label>
-                <input type="file" name="txtImagen3" id="fileInput" > <br><br>
+
 				<input type="submit" value="Registrar"/> <br>
 		</form>
 	</div>
