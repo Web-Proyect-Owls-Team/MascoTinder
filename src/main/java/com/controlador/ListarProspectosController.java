@@ -31,14 +31,16 @@ public class ListarProspectosController extends HttpServlet{
 		int idMascota = Integer.parseInt(request.getParameter("idMascota"));
 		Mascota mascota = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMascota);
 		request.setAttribute("mascota", mascota);
-		request.getRequestDispatcher("jsp/listarProspectos.jsp").forward(request, response);
+		
+		//request.getRequestDispatcher("jsp/listarProspectos.jsp").forward(request, response);
 		listarProspectos(request, response);
 		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("jsp/listarProspectos.jsp").forward(request, response);
+		
+		//request.getRequestDispatcher("jsp/listarProspectos.jsp").forward(request, response);
 		listarProspectos(request, response);
 
 	}
@@ -61,22 +63,29 @@ public class ListarProspectosController extends HttpServlet{
 				ArrayList<Mascota> prospectos = new ArrayList<Mascota>();
 				
 				//Filtrar
-				for(int i = 0; i <= posiblesProspectos.size();i++ ) {
+				for(int i = 0; i < posiblesProspectos.size(); i++ ) {
+					System.out.println("El size " + posiblesProspectos.size());
+					System.out.println( "Prospecto Mascota" + posiblesProspectos.get(i));
+					boolean mismaEspecie = mascota.getPreferencia().getEspecie().equals(posiblesProspectos.get(i).getEspecie());
 					
-					if(mascota.getPreferencia().getEspecie().equalsIgnoreCase(posiblesProspectos.get(i).getEspecie())) {
-						
-						if(mascota.getPreferencia().getSexo().equalsIgnoreCase(posiblesProspectos.get(i).getSexo())) {
-							
+					if(mismaEspecie) {
+						System.out.println("Mascota misma especie");
+						if(mascota.getPreferencia().getSexo().equals(posiblesProspectos.get(i).getSexo())) {
+							System.out.println("Mascota sexo aprobado");
 							if(mascota.getPreferencia().getEdadMaxima()>= posiblesProspectos.get(i).getEdad() &&
 									mascota.getPreferencia().getEdadMinima()<= posiblesProspectos.get(i).getEdad()) {
+								System.out.println("Mascota con edad adecuada");
 								prospectos.add(posiblesProspectos.get(i));
+								
 							}
 						}
 					}
 				}
 				
-				misession.setAttribute("Prospectos", prospectos);
-				request.setAttribute("Prospecto", prospectos);
+				System.out.println("En total coinciden " + prospectos.size());
+				//misession.setAttribute("Prospectos", prospectos);
+				request.setAttribute("prospectos", prospectos);
+				
 				request.getRequestDispatcher("jsp/listarProspectos.jsp").forward(request, response);
 				
 				

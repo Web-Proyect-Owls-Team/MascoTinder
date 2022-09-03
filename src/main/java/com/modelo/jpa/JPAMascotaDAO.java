@@ -50,8 +50,8 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 	public List<Mascota> getProspectosByIdPropietarios(int idPropietarios) {
 		
 		ArrayList<Mascota> mascotasProspecto = new ArrayList<Mascota>();
-		
-		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.propietario.id != : propietario_id";
+		System.out.println("el id de mi propietario es : " + idPropietarios);
+		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.propietario.id != :propietario_id";
 		Query q = this.em.createQuery(sentenciaJPQL);
 		q.setParameter("propietario_id", idPropietarios);
 		List<?> aux = q.getResultList();
