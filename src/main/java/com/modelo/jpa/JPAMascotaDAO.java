@@ -3,11 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
-import javax.servlet.http.HttpSession;
-
 import com.modelo.dao.MascotaDAO;
 import com.modelo.entidades.Mascota;
-import com.modelo.entidades.Preferencia;
 
 public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements MascotaDAO{
 

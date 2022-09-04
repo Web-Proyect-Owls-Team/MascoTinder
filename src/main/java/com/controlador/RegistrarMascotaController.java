@@ -2,8 +2,6 @@ package com.controlador;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,12 +51,12 @@ public class RegistrarMascotaController extends HttpServlet {
 		int fechaNacimiento = Integer.parseInt(request.getParameter("txtFechaNacimiento"));
 		String sexo = request.getParameter("txtSexo");
 		String especie = request.getParameter("txtEspecie");
-		//String foto = request.getParameter("txtImagenes");
-
+		Foto foto1 = new Foto(request.getParameter("txtFoto1"));
+		Foto foto2 = new Foto(request.getParameter("txtFoto2"));
+		Foto foto3 = new Foto(request.getParameter("txtFoto3"));
 		// 2.- Llamar al modelo
 		Mascota m = new Mascota();
-		Foto foto1 = new Foto();
-		Foto foto2 = new Foto();
+
 		m.setNombre(nombre);
 		m.setEdad(fechaNacimiento);
 		m.setSexo(sexo);
@@ -66,8 +64,6 @@ public class RegistrarMascotaController extends HttpServlet {
 
 		DAOFactory.getFactory().getMascotaDAO().create(m);
 		
-		foto1.setFoto("./img/img7.jpeg");
-		foto2.setFoto("./img/img3.jpeg");
 		
 		
 		
@@ -81,12 +77,14 @@ public class RegistrarMascotaController extends HttpServlet {
 		
 		foto1.setMascota(mascota);
 		foto2.setMascota(mascota);
+		foto3.setMascota(mascota);
 		
 		m.setPropietario(propietario);
 		
 
 		DAOFactory.getFactory().getFotoDAO().create(foto1);
 		DAOFactory.getFactory().getFotoDAO().create(foto2);
+		DAOFactory.getFactory().getFotoDAO().create(foto3);
 		
 		DAOFactory.getFactory().getMascotaDAO().update(m);
 		

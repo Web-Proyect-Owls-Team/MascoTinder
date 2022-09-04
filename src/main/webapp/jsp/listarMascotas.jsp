@@ -27,24 +27,26 @@
 					<td scope="col">Nombre</td>
 					<td scope="col">Acciones</td>
 					<td scope ="col">Prospectos</td>
+					<td scope="col"> Fotos <td/>
 				</tr>
 			</thead>
 			<c:forEach items="${ mascotas }" var="m">
 				<tr>
 					<td>${m.id}</td>
 					<td>${m.nombre}</td>
-					<td></td>
 					<td><a href="RegistrarPreferenciaController?idMascota=${m.id}">
 							Preferences </a> | 
 							<a
 						href="#"> Eliminar </a></td>
 					<td><a href="ListarProspectosController?idMascota=${m.id} ">prospectos</a></td>
+					<td><a href="ListarCoincidenciasController?idMascota=${m.id} ">Matches</a></td>
 				</tr>
-					<c:forEach items="${ fotos }" var="f">
+				 </tr>
+					<c:forEach items="${ m.foto }" var="f">
 						<tr>
-						<td> <img alt="Esta es una foto" src="${f.foto }"> </td>
-
-				</c:forEach>
+							<td> <img alt="Esta es una foto" src="${f.foto }" width="500px" height="500px"> </td>
+						</tr>
+					</c:forEach>
 
 			</c:forEach>
 			

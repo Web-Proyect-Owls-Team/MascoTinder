@@ -46,16 +46,21 @@ public class ListarMascotasController extends HttpServlet {
 				System.out.println(idPropietario);
 				// 2. Call model
 				ArrayList<Mascota> mascotas = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO().getMascotasByIdPropietario(idPropietario);
-				ArrayList<Foto> fotos = (ArrayList<Foto>) DAOFactory.getFactory().getFotoDAO().getFotoByIdMascota(1);
-				
-				// 3. Call View
+
 				
 				
+				// Enviar las fotos por cada mascota
+				for (Mascota mascota : mascotas) {
+					ArrayList<Foto> fotosMascota = (ArrayList<Foto>) DAOFactory.getFactory().getFotoDAO().getFotoByIdMascota(mascota.getId());
+					mascota.setFotos(fotosMascota);
+				}
 				
+				// 3. Forward to view
 				misession.setAttribute("misMascotas", mascotas);
 				request.setAttribute("mascotas", mascotas);
-				request.setAttribute("fotos", fotos);
 				request.getRequestDispatcher("jsp/listarMascotas.jsp").forward(request, response);
+
 	}
+
 	
 }

@@ -29,7 +29,9 @@ public class Foto implements Serializable {
 	@JoinColumn(name = "id_mascota")
 	private Mascota mascota;
 
-
+	public Foto(String foto) {
+		this.foto= foto;
+	}
 	
 	public Foto() {
 	}
@@ -57,5 +59,7 @@ public class Foto implements Serializable {
 	public void setMascota(Mascota mascota) {
 		this.mascota = mascota;
 	}
+	
+	
    
 }

@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-md-6 mb-4">
                   <label class="form-label" for="txtSexo">Sexo</label>
-                  <select class="select name="txtSexo" id="sexo">
+                  <select class="select" name="txtSexo" id="sexo">
                     <option value="seleccione" disabled>Sexo</option>
                     <option value="Macho">Macho</option>
                     <option value="Hembra">Hembra</option>
@@ -69,7 +69,14 @@
                     <option value="Ave">Ave</option>
                 </select>
               </div>
-
+              <div class="mb-4">
+                 <span>Copie y pegue la url de la foto de su mascota</span><br>
+                 <span>Foto 1 </span> <input type="text" name="txtFoto1"><br><br>
+                 <span>Foto 2  </span><input type="text" name="txtFoto2"> <br><br>
+                 <span>Foto 3 </span><input type="text" name="txtFoto3"><br><br>
+               </div>
+              	
+				
               <input type="submit" class="btn login_btn" value="¡Registrar!" /> <br>
 
             </form>
