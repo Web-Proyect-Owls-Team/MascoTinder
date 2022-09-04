@@ -15,5 +15,7 @@ public abstract class DAOFactory {
     public abstract  MascotaDAO getMascotaDAO();
     public abstract PreferenciaDAO getPreferenciaDAO();
     public abstract FotoDAO getFotoDAO();
+    public abstract CoincidenciaDAO getCoincidenciaDAO();
+
 
 }
