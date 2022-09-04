@@ -71,3 +71,9 @@ body, html {
 	box-shadow: none !important;
 	outline: 0px !important;
 }
+
+@media (min-width: 1025px) {
+.h-custom {
+height: 100vh !important;
+}
+}
