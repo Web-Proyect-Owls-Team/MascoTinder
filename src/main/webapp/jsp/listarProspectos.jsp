@@ -21,14 +21,18 @@
 				<tr>
 					<td scope="col">id</td>
 					<td scope="col">Nombre</td>
+					<td scope ="col">No Like</td>
+					<td scope ="col">Like</td>
 				</tr>
 			</thead>
-			<c:forEach items="${ prospectos }" var="p">
+		
 				<tr>
-					<td>${p.id}</td>
-					<td>${p.nombre}</td>
+					<td>${prospecto.id}</td>
+					<td>${prospecto.nombre}</td>
+					<td><a href="ListarProspectosController?idMascota=${miMascota.id}"> No Like </a> | 
+						<a href="DarLikeController?idPretendido=${prospecto.id}&idPretendiente=${miMascota.id}"> Like </a></td>
 				</tr>
-			</c:forEach>
+			
 		</table>
 	</div>
 
