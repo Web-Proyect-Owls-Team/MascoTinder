@@ -18,19 +18,15 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-dark">
-		<div class="container-fluid">
-			<span class="navbar-brand mb-0 h1">Iniciar sesión</span>
-		</div>
-
-	</nav>
+	<%@include file="../templates/banner_home.html"%>
 
 
 	<div class="wrapper">
 		<div class="formContent">
+		<img src="${pageContext.request.contextPath}/images/mascotinder-logo.png"  width="150" ><br>
 			<form method="post" action="LoginController">
 				<fieldset>
-					<legend>Log in</legend>
+					<legend>Iniciar sesión</legend>
 					<p>Usuario</p>
 					<input type="text" name="usuario" /><br><br>
 					<p>Contraseña</p>
