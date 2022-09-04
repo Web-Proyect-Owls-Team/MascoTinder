@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-md-6 mb-4">
                   <label class="form-label" for="txtSexo">Sexo</label>
-                  <select class="select name="txtSexo" id="sexo">
+                  <select class="select" name="txtSexo" id="sexo">
                     <option value="seleccione" disabled>Sexo</option>
                     <option value="Macho">Macho</option>
                     <option value="Hembra">Hembra</option>
