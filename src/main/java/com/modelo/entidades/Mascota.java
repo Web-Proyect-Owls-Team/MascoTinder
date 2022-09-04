@@ -62,6 +62,8 @@ public class Mascota  implements Serializable{
 		this.especie = especie;
 	}
 	
+
+	
 	//Getters y Setters
 	public int getId() {
 		return id;

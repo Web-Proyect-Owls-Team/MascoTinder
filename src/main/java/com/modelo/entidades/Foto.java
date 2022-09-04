@@ -53,5 +53,7 @@ public class Foto implements Serializable {
 	public void setMascota(Mascota mascota) {
 		this.mascota = mascota;
 	}
+	
+	
    
 }
