@@ -33,7 +33,6 @@
 				<tr>
 					<td>${m.id}</td>
 					<td>${m.nombre}</td>
-					<td></td>
 					<td><a href="RegistrarPreferenciaController?idMascota=${m.id}">
 							Preferences </a> | 
 							<a
@@ -41,11 +40,13 @@
 					<td><a href="ListarProspectosController?idMascota=${m.id} ">prospectos</a></td>
 					<td><a href="ListarCoincidenciasController?idMascota=${m.id} ">Matches</a></td>
 				</tr>
+				
+				 </tr>
+
 					<c:forEach items="${ fotos }" var="f">
 						<tr>
 						<td> <img alt="Esta es una foto" src="${f.foto }"> </td>
-
-				</c:forEach>
+					</c:forEach>
 
 			</c:forEach>
 			

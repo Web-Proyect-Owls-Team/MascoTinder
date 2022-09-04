@@ -49,10 +49,9 @@ public class Mascota  implements Serializable{
 	@OneToMany (mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Foto> foto;
 
-
 	
-	/**@OneToMany (mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Foto> foto1;**/
+	@OneToMany (mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Foto> foto;
 	
 	@OneToMany (mappedBy = "pretendiente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Coincidencia> coincidencias;
@@ -71,6 +70,8 @@ public class Mascota  implements Serializable{
 		this.sexo = sexo;
 		this.especie = especie;
 	}
+	
+
 	
 	//Getters y Setters
 	public int getId() {

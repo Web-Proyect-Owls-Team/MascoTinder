@@ -46,7 +46,11 @@ public class ListarMascotasController extends HttpServlet {
 				System.out.println(idPropietario);
 				// 2. Call model
 				ArrayList<Mascota> mascotas = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO().getMascotasByIdPropietario(idPropietario);
-				ArrayList<Foto> fotos = (ArrayList<Foto>) DAOFactory.getFactory().getFotoDAO().getFotoByIdMascota(1);
+
+				ArrayList<Foto> fotos = (ArrayList<Foto>) DAOFactory.getFactory().getFotoDAO().getFotoByIdMascota(mascotas.get(1).getId());
+				
+
+			
 				
 				// 3. Call View
 				
