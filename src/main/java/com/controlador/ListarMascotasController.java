@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.modelo.dao.DAOFactory;
+import com.modelo.entidades.Foto;
 import com.modelo.entidades.Mascota;
 
 
@@ -45,12 +46,15 @@ public class ListarMascotasController extends HttpServlet {
 				System.out.println(idPropietario);
 				// 2. Call model
 				ArrayList<Mascota> mascotas = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO().getMascotasByIdPropietario(idPropietario);
+				ArrayList<Foto> fotos = (ArrayList<Foto>) DAOFactory.getFactory().getFotoDAO().getFotoByIdMascota(1);
+				
 				// 3. Call View
 				
 				
 				
 				misession.setAttribute("misMascotas", mascotas);
 				request.setAttribute("mascotas", mascotas);
+				request.setAttribute("fotos", fotos);
 				request.getRequestDispatcher("jsp/listarMascotas.jsp").forward(request, response);
 	}
 	

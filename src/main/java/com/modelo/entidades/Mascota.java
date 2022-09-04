@@ -1,7 +1,7 @@
 package com.modelo.entidades;
 
-import java.io.File;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity(name = "Mascota")
@@ -29,20 +30,33 @@ public class Mascota  implements Serializable{
 	@Column(name = "mas_edad")
 	private int edad;
 
-	@Column(name = "mas_imagene")
-	private String imagen;
-	
 	@Column(name = "mas_sexo")
 	private String sexo;
 	
 	@Column(name = "mas_especie")
 	private String especie;
 	
-	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
+	@ManyToOne (cascade = CascadeType.DETACH, fetch = FetchType.EAGER) 
 	private Propietario propietario;
+	
+	//@OneToMany(mappedBy = "pretendiente", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+	//private List <Match> match;
 	
 	@OneToOne @JoinColumn
     private Preferencia preferencia;
+
+	// Foto
+	@OneToMany (mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Foto> foto;
+
+
+	
+	@OneToMany (mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Foto> foto;
+	
+	@OneToMany (mappedBy = "pretendiente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Coincidencia> coincidencias;
+
 	
 	//Constructor sin parametros
 	public Mascota() {
@@ -50,13 +64,12 @@ public class Mascota  implements Serializable{
 	}
 
 	//Constructor con parametros
-	public Mascota(int id, String nombre, int edad, String sexo, String especie, String imagen) {
+	public Mascota(int id, String nombre, int edad, String sexo, String especie) {
 		this.id = id;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.sexo = sexo;
 		this.especie = especie;
-		this.imagen = imagen;
 	}
 	
 	//Getters y Setters
@@ -90,11 +103,11 @@ public class Mascota  implements Serializable{
 	public void setEspecie(String especie) {
 		this.especie = especie;
 	}
-	public String getImagen() {
-		return imagen;
+	public List<Foto> getFotos() {
+		return foto;
 	}
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
+	public void setFotos(List<Foto> foto) {
+		this.foto = foto;
 	}
 	
 	public Propietario getPropietario() {
@@ -111,11 +124,25 @@ public class Mascota  implements Serializable{
 	public void setPreferencia(Preferencia preferencia) {
 		this.preferencia = preferencia;
 	}
+	
+	
+
+	public List<Foto> getFoto() {
+		return foto;
+	}
+
+	public void setFoto(List<Foto> foto) {
+		this.foto = foto;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	@Override
 	public String toString() {
 		return "Mascota [id=" + id + ", nombre=" + nombre + ", anioNaciomiento=" + edad + ", imagen="
-				+ imagen + ", sexo=" + sexo + ", especie=" + especie + ", Propietario=" + propietario + "]";
+				+ foto + ", sexo=" + sexo + ", especie=" + especie + ", Propietario=" + propietario + "]";
 	}
 	
 	
