@@ -4,6 +4,7 @@
 	<class>com.modelo.entidades.Propietario</class>
 	<class>com.modelo.entidades.Mascota</class>
 	<class>com.modelo.entidades.Preferencia</class>
+	<class>com.modelo.entidades.Foto</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mascotinder"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
@@ -11,7 +12,7 @@
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 			<!-- property name="eclipselink.ddl-generation" value="none"/-->
 			<!-- property name="eclipselink.ddl-generation" value="none"/-->
-			<property name="eclipselink.ddl-generation" value="create-tables"/>
+			<property name="eclipselink.ddl-generation" value="none"/>
 			<!-- property name="eclipselink.ddl-generation" value="drop-and-create-tables"/-->
 		</properties>
 	</persistence-unit>

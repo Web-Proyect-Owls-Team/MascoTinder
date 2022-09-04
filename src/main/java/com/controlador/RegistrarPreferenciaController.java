@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.modelo.dao.DAOFactory;
-import com.modelo.entidades.Especie;
 import com.modelo.entidades.Mascota;
 import com.modelo.entidades.Preferencia;
-import com.modelo.entidades.Sexo;
+
 
 @WebServlet("/RegistrarPreferenciaController")
 public class RegistrarPreferenciaController extends HttpServlet{
@@ -33,39 +32,31 @@ public class RegistrarPreferenciaController extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		
-		//Obtener parámetros
+		//Get parameters
 		String auxEdadMinima = request.getParameter("txtEdadMinima");
 		String auxEdadMaxima = request.getParameter("txtEdadMaxima");
-		String sexoS = request.getParameter("txtSexo");
-		String especieS = request.getParameter("txtEspecie");
+		String sexo = request.getParameter("txtSexo");
+		String especie = request.getParameter("txtEspecie");
 		int idMascota = Integer.parseInt(request.getParameter("idMascota"));
-		
-		//Tranformar los valores de String a Int
-		
 		int edadMinima = Integer.parseInt(auxEdadMinima);
 		int edadMaxima = Integer.parseInt(auxEdadMaxima);
 		
-		//Iniciar el modelo.
 		Preferencia preferencia = new Preferencia();
-		Especie especie = preferencia.convertEspecie(especieS);
-		Sexo  sexo= preferencia.convertSexo(sexoS);
-		
 		preferencia.setEdadMinima(edadMinima);
 		preferencia.setEdadMaxima(edadMaxima);
 		preferencia.setEspecie(especie);
 		preferencia.setSexo(sexo);
 		
-		
+		//Call Models
 	
 		DAOFactory.getFactory().getPreferenciaDAO().create(preferencia);
-		
-		
 		Mascota m = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMascota);
 		m.setPreferencia(preferencia);
-		
 		DAOFactory.getFactory().getMascotaDAO().update(m);
 		
-		request.getRequestDispatcher("jsp/listaMascotas.jsp").forward(request, response);
+		
+		// Dispatch request
+		request.getRequestDispatcher("ListarMascotasController").forward(request, response);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.modelo.dao;
 
-import com.modelo.jpa.JPADAOFactory;
+
+import com.modelo.jpa.*;
 
 public abstract class DAOFactory {
     // Sería mejor por inyección de objetos
@@ -13,5 +14,6 @@ public abstract class DAOFactory {
     public abstract PropietarioDAO getPropietarioDAO();
     public abstract  MascotaDAO getMascotaDAO();
     public abstract PreferenciaDAO getPreferenciaDAO();
+    public abstract FotoDAO getFotoDAO();
 
 }

@@ -42,6 +42,7 @@ public class RegistrarPropietarioController extends HttpServlet {
 		p.setClave(clave);
 
 		DAOFactory.getFactory().getPropietarioDAO().create(p);
+		System.out.println("Usuario creado!!");
 
 		// 3.- Llamar a la vista
 		request.getRequestDispatcher("LoginController").forward(request, response);

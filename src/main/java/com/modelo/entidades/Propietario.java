@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity(name = "Propietario")
@@ -31,8 +30,7 @@ public class Propietario implements Serializable {
 	@Column(name = "pro_clave")
 	private String clave;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "propietario")	
-	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "propietario")
 	private List<Mascota> mascotas;
 
 	public Propietario() {

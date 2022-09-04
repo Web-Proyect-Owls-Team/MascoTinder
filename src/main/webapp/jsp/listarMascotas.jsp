@@ -10,10 +10,15 @@
 </head>
 <body>
 	<%@include file="../templates/banner_interno.html"%>
-	<h1>Mis Mascotas</h1>
+	<h1>Mis Mascotas</h1>	
 	<div>
 		<a href="RegistrarMascotaController"> Nuevo </a>
 	</div>
+	
+	<div>
+	<a href = "ListarProspectosController">Prospectos</a>
+	</div>
+	
 	<div class="wrapper">
 		<table class="table">
 			<thead class="thead-dark">
@@ -21,17 +26,28 @@
 					<td scope="col">id</td>
 					<td scope="col">Nombre</td>
 					<td scope="col">Acciones</td>
+					<td scope ="col">Prospectos</td>
 				</tr>
 			</thead>
 			<c:forEach items="${ mascotas }" var="m">
 				<tr>
 					<td>${m.id}</td>
 					<td>${m.nombre}</td>
+					<td></td>
 					<td><a href="RegistrarPreferenciaController?idMascota=${m.id}">
-							Preferences </a> | <a
+							Preferences </a> | 
+							<a
 						href="#"> Eliminar </a></td>
+					<td><a href="ListarProspectosController?idMascota=${m.id} ">prospectos</a></td>
 				</tr>
+					<c:forEach items="${ fotos }" var="f">
+						<tr>
+						<td> <img alt="Esta es una foto" src="${f.foto }"> </td>
+
+				</c:forEach>
+
 			</c:forEach>
+			
 		</table>
 	</div>
 
