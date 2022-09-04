@@ -1,5 +1,6 @@
  package com.modelo.jpa;
 
+import com.modelo.dao.CoincidenciaDAO;
 import com.modelo.dao.DAOFactory;
 import com.modelo.dao.MascotaDAO;
 import com.modelo.dao.PreferenciaDAO;
@@ -23,6 +24,12 @@ public class JPADAOFactory extends DAOFactory {
 	@Override
 	public PreferenciaDAO getPreferenciaDAO() {
 		return new JPAPreferenciaDAO();
+	}
+
+	@Override
+	public CoincidenciaDAO getCoincidenciaDAO() {
+		
+		return new JPACoincidenciaDAO();
 	}
 
 

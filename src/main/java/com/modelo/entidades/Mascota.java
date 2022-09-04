@@ -1,7 +1,7 @@
 package com.modelo.entidades;
 
-import java.io.File;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity(name = "Mascota")
@@ -38,11 +39,21 @@ public class Mascota  implements Serializable{
 	@Column(name = "mas_especie")
 	private String especie;
 	
-	@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
+	@ManyToOne (cascade = CascadeType.DETACH, fetch = FetchType.EAGER) 
 	private Propietario propietario;
+	
+	//@OneToMany(mappedBy = "pretendiente", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+	//private List <Match> match;
 	
 	@OneToOne @JoinColumn
     private Preferencia preferencia;
+	
+	@OneToMany (mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Foto> foto;
+	
+	@OneToMany (mappedBy = "pretendiente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Coincidencia> coincidencias;
+
 	
 	//Constructor sin parametros
 	public Mascota() {
@@ -110,6 +121,20 @@ public class Mascota  implements Serializable{
 
 	public void setPreferencia(Preferencia preferencia) {
 		this.preferencia = preferencia;
+	}
+	
+	
+
+	public List<Foto> getFoto() {
+		return foto;
+	}
+
+	public void setFoto(List<Foto> foto) {
+		this.foto = foto;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Override

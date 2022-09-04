@@ -1,7 +1,5 @@
 package com.modelo.jpa;
 
-import javax.persistence.Query;
-
 import com.modelo.dao.PreferenciaDAO;
 import com.modelo.entidades.Preferencia;
 
@@ -18,6 +16,10 @@ public class JPAPreferenciaDAO extends JPAGenericDAO<Preferencia, Integer> imple
 		Preferencia preferencia = new Preferencia();
 		return preferencia;
 	}
+
+
+	
+	
 
 
 	
