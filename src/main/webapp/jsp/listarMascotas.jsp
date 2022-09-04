@@ -27,6 +27,7 @@
 					<td scope="col">Nombre</td>
 					<td scope="col">Acciones</td>
 					<td scope ="col">Prospectos</td>
+					<td scope="col"> Fotos <td/>
 				</tr>
 			</thead>
 			<c:forEach items="${ mascotas }" var="m">
@@ -40,9 +41,10 @@
 					<td><a href="ListarProspectosController?idMascota=${m.id} ">prospectos</a></td>
 				
 				 </tr>
-					<c:forEach items="${ fotos }" var="f">
+					<c:forEach items="${ m.fotos }" var="f">
 						<tr>
-						<td> <img alt="Esta es una foto" src="${f.foto }"> </td>
+							<td> <img alt="Esta es una foto" src="${f.foto }" width="500px" height="500px"> </td>
+						</tr>
 					</c:forEach>
 
 			</c:forEach>
