@@ -51,8 +51,8 @@ public class Mascota  implements Serializable{
 
 
 	
-	@OneToMany (mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Foto> foto;
+	/**@OneToMany (mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Foto> foto1;**/
 	
 	@OneToMany (mappedBy = "pretendiente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Coincidencia> coincidencias;
