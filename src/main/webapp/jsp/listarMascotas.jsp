@@ -41,14 +41,8 @@
 					<td><a href="ListarProspectosController?idMascota=${m.id} ">prospectos</a></td>
 					<td><a href="ListarCoincidenciasController?idMascota=${m.id} ">Matches</a></td>
 				</tr>
-				
 				 </tr>
-<<<<<<< HEAD
-					<c:forEach items="${ m.fotos }" var="f">
-=======
-
-					<c:forEach items="${ fotos }" var="f">
->>>>>>> 787f8839eff0338a14d643c88998fc531e953877
+					<c:forEach items="${ m.foto }" var="f">
 						<tr>
 							<td> <img alt="Esta es una foto" src="${f.foto }" width="500px" height="500px"> </td>
 						</tr>
