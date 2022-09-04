@@ -69,7 +69,14 @@
                     <option value="Ave">Ave</option>
                 </select>
               </div>
-
+              <div class="mb-4">
+                 <span>Copie y pegue la url de la foto de su mascota</span><br>
+                 <span>Foto 1 </span> <input type="text" name="txtFoto1"><br><br>
+                 <span>Foto 2  </span><input type="text" name="txtFoto2"> <br><br>
+                 <span>Foto 3 </span><input type="text" name="txtFoto3"><br><br>
+               </div>
+              	
+				
               <input type="submit" class="btn login_btn" value="¡Registrar!" /> <br>
 
             </form>
