@@ -5,6 +5,7 @@
 	<class>com.modelo.entidades.Mascota</class>
 	<class>com.modelo.entidades.Preferencia</class>
 	<class>com.modelo.entidades.Foto</class>
+	<class>com.modelo.entidades.Coincidencia</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mascotinder"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>

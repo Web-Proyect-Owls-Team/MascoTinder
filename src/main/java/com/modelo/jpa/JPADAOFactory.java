@@ -2,6 +2,8 @@
 
 
 
+
+import com.modelo.dao.CoincidenciaDAO;
 import com.modelo.dao.DAOFactory;
 import com.modelo.dao.FotoDAO;
 import com.modelo.dao.MascotaDAO;
@@ -33,6 +35,12 @@ public class JPADAOFactory extends DAOFactory {
 		return new JPAFotoDAO();
 	}
 
+
+	@Override
+	public CoincidenciaDAO getCoincidenciaDAO() {
+		
+		return new JPACoincidenciaDAO();
+	}
 
 
 }
