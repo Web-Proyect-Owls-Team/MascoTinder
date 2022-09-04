@@ -1,6 +1,9 @@
  package com.modelo.jpa;
 
+
+
 import com.modelo.dao.DAOFactory;
+import com.modelo.dao.FotoDAO;
 import com.modelo.dao.MascotaDAO;
 import com.modelo.dao.PreferenciaDAO;
 import com.modelo.dao.PropietarioDAO;
@@ -24,6 +27,12 @@ public class JPADAOFactory extends DAOFactory {
 	public PreferenciaDAO getPreferenciaDAO() {
 		return new JPAPreferenciaDAO();
 	}
+	@Override
+	public FotoDAO getFotoDAO() {
+		// TODO Auto-generated method stub
+		return new JPAFotoDAO();
+	}
+
 
 
 }
