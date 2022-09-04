@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,10 +23,10 @@
 					<td scope="col">Nombre</td>
 				</tr>
 			</thead>
-			<c:forEach items="${ mascotas }" var="m">
+			<c:forEach items="${ prospectos }" var="p">
 				<tr>
-					<td>${m.id}</td>
-					<td>${m.nombre}</td>
+					<td>${p.id}</td>
+					<td>${p.nombre}</td>
 				</tr>
 			</c:forEach>
 		</table>
