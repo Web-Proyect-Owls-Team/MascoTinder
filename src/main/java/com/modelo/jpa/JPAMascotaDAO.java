@@ -72,21 +72,6 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 		return mascotas;
 	}
 
-	@Override
-	public List<Mascota> getMascotasByCoincidencias(ArrayList<Coincidencia> coincidenciasPretendiente,
-			ArrayList<Coincidencia> coincidenciasPretendido) {
-		ArrayList<Mascota> matchs = new ArrayList<Mascota>();
-		for (Coincidencia c: coincidenciasPretendiente) {
-				matchs.add(c.getPretendido());
-		}
-		
-		for (Coincidencia c: coincidenciasPretendido) {
-				matchs.add(c.getPretendiente());
-		}
-		
-		return matchs;
-	} 
-
 
 
 }

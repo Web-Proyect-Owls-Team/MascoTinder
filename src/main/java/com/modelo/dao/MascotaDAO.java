@@ -15,7 +15,5 @@ public interface MascotaDAO extends GenericDAO<Mascota, Integer>{
 	
 	List<Mascota> getProspectos(Mascota m);
 	
-	List<Mascota> getMascotasByCoincidencias(ArrayList<Coincidencia> pretendientes, ArrayList<Coincidencia> pretendidos );
-	
 	
 }
