@@ -41,7 +41,7 @@ public class ListarCoincidenciasController  extends HttpServlet{
 	}
 	
 	private void listarMascotasCoincidencias(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
-	
+		// Parameters
 		int idMiMascota;
 		if(request.getAttribute("idMascota") != null) {
 			// GET
@@ -51,42 +51,19 @@ public class ListarCoincidenciasController  extends HttpServlet{
 			idMiMascota = Integer.parseInt(request.getParameter("idMascota"));
 		}
 		
+		// Models
 		Mascota miMascota = DAOFactory.getFactory().getMascotaDAO().getById(idMiMascota);
+		System.out.println("id Mascota : " + miMascota.getId());
+		ArrayList<Coincidencia> coincidenciasPretendiente = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidenciasAsPretendiente(miMascota);
+		System.out.println("c1: " + coincidenciasPretendiente);
+		ArrayList<Coincidencia> coincidenciasPretendido = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidenciasAsPretendido(miMascota);
+		System.out.println("c2: " + coincidenciasPretendido);
 		
-		ArrayList<Coincidencia> coincidenciasPretendiente = new ArrayList<Coincidencia>();
-		List<?> soyPretendiente =  miMascota.getCoincidenciasE();
-		for (int i = 0; i < soyPretendiente.size(); i++ ) {
-			Coincidencia c = (Coincidencia) soyPretendiente.get(i);
-			if (c.getLike()) {
-				coincidenciasPretendiente.add(c);
-			}
-		}
+		ArrayList<Mascota> matchs = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO().getMascotasByCoincidencias(coincidenciasPretendiente, coincidenciasPretendido);
 		
-		ArrayList<Coincidencia> coincidenciasPretendido = new ArrayList<Coincidencia>();
-		List<?> soyPretendido =  miMascota.getCoincidenciasR();
-		for (int i = 0; i < soyPretendido.size(); i++ ) {
-			Coincidencia c = (Coincidencia) soyPretendido.get(i);
-			if (c.getLike()) {
-				coincidenciasPretendido.add(c);
-			}
-			
-		}
-		
-		ArrayList<Mascota> matchs = new ArrayList<Mascota>();
-		for (Coincidencia c: coincidenciasPretendiente) {
-				matchs.add(c.getPretendido());
-		}
-		
-		for (Coincidencia c: coincidenciasPretendido) {
-				matchs.add(c.getPretendiente());
-		}
-		
-		//ArrayList<Mascota> coincidenciaMascotas = (ArrayList<Mascota>) DAOFactory.getFactory().getCoincidenciaDAO().getCoincidencias(miMascota, true);
-		//System.out.println("Coincidencias : " + coincidenciaMascotas.size());
-		//ArrayList<Foto> fotos = (ArrayList<Foto>) DAOFactory.getFactory().getFotoDAO().getFotoByIdMascota(1);
-		
+
 		request.setAttribute("match", matchs);
-		//request.setAttribute("fotos", fotos);
+	
 		request.getRequestDispatcher("jsp/listarCoincidencias.jsp").forward(request, response);
 	}
 
