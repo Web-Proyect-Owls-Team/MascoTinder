@@ -33,6 +33,13 @@ public class Propietario implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "propietario")
 	private List<Mascota> mascotas;
 
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "emisor")
+	private List<Mensaje> mensajesEnviados;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "receptor")
+	private List<Mensaje> mensajesRecibidos;
+
+
 	public Propietario() {
 		
 	}
