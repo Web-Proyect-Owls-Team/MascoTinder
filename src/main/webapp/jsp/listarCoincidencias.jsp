@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/login_styles.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <link rel="stylesheet" 
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -19,7 +21,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 		<table class="table align-middle mb-0 bg-white">
 			<thead class="bg-light">
 				<tr>
-					<th>Match</th>
+					<th>Matches para ${miMascota.nombre}</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -37,7 +39,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 					</td>
 					
 					<td>
-					<a class="btn btn-secondary" href="ListarMensajesController?idMatch=${m.id}&idMiMascota=${miMascota.id}" role="button"><i class="fa-solid fa-messages"></i>  Enviar mensaje</a> 
+					<a class="btn btn-secondary" href="ListarMensajesController?idMatch=${m.id}&idMiMascota=${miMascota.id}" role="button"><i class="fa-solid fa-message"></i>  Enviar mensaje</a> 
 					</td>
 				</tr>
 

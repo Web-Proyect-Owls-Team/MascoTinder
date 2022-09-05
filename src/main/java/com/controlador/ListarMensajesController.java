@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.modelo.dao.DAOFactory;
 import com.modelo.entidades.Coincidencia;
+import com.modelo.entidades.Mascota;
 import com.modelo.entidades.Mensaje;
 import com.modelo.entidades.Propietario;
 
@@ -37,6 +38,12 @@ public class ListarMensajesController extends HttpServlet {
 		//HttpSession misession = request.getSession(true);
 		int idMascotaMatch = Integer.parseInt(request.getParameter("idMatch"));
 		int idMiMascota = Integer.parseInt(request.getParameter("idMiMascota"));
+		Mascota mascota = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMiMascota);
+		request.setAttribute("mascota", mascota);
+		Mascota match = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMascotaMatch);
+		request.setAttribute("match", match);
+		HttpSession misession = request.getSession(true);
+		request.setAttribute("myId", misession.getAttribute("id"));
 		
 		
 		Coincidencia coincidencia = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidencia(idMascotaMatch, idMiMascota);
@@ -66,6 +73,12 @@ public class ListarMensajesController extends HttpServlet {
 
 		int idMascotaMatch = (int) request.getAttribute("idMatch");
 		int idMiMascota = (int) request.getAttribute("idMiMascota");
+		Mascota mascota = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMiMascota);
+		request.setAttribute("mascota", mascota);
+		Mascota match = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMascotaMatch);
+		request.setAttribute("match", match);
+		HttpSession misession = request.getSession(true);
+		request.setAttribute("myId", misession.getAttribute("id"));
 		
 		
 		Coincidencia coincidencia = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidencia(idMascotaMatch, idMiMascota);
