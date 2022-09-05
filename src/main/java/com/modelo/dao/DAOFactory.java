@@ -16,6 +16,6 @@ public abstract class DAOFactory {
     public abstract PreferenciaDAO getPreferenciaDAO();
     public abstract FotoDAO getFotoDAO();
     public abstract CoincidenciaDAO getCoincidenciaDAO();
-
+    public abstract MensajeDAO getMensajeDAO();
 
 }

@@ -33,32 +33,33 @@
           <div class="card-body p-4 p-md-5">
             <h4 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Preferencias de ${mascota.nombre}</h4>
 
-            <form method="post" action="RegistrarMascotaController" class="px-md-2">
+            <form method="post" action="RegistrarPreferenciaController" class="px-md-2">
+            <input type="hidden" name="idMascota" value="${mascota.id }">
 
               <div class="form-outline mb-4">
-                <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre de la mascota"/>
+                <input type="text" name="txtNombre" id="txtNombre" value="${mascota.nombre }" class="form-control" />
               </div>
 
               <div class="row">
                 <div class="col-md-6 mb-4">
 
-                  <div class="form-outline datepicker">
-                    <input type="number" class="form-control" name="txtFechaNacimiento" id="txtFechaNacimiento" placeholder="Edad de la mascota" /> <br> <br>
+                  <div class="form-outline datepicker">		
+                  <label class="form-label" for="txtEdadMinima">Edad mínima</label>	    
+                    <input type="number" class="form-control" name="txtEdadMinima" id="txtEdadMinima" placeholder="${mascota.preferencia.edadMinima}" /> <br>
+                    <label class="form-label" for=txtEdadMaxima>Edad máxima</label>	 
+                    <input type="number" class="form-control" name="txtEdadMaxima" id="txtEdadMaxima" placeholder="${mascota.preferencia.edadMaxima}" /> <br> 
                   </div>
 
                 </div>
                 <div class="col-md-6 mb-4">
+                <br>
                   <label class="form-label" for="txtSexo">Sexo</label>
                   <select class="select name="txtSexo" id="sexo">
                     <option value="seleccione" disabled>Sexo</option>
                     <option value="Macho">Macho</option>
                     <option value="Hembra">Hembra</option>
                 </select>
-
-                </div>
-              </div>
-
-              <div class="mb-4">
+                <br><br><br><br>
               <label class="form-label" for="txtEspecie">Especie</label>
               
               <select name="txtEspecie" id="especie">
@@ -68,9 +69,14 @@
                     <option value="Hammster">Hammster</option>
                     <option value="Ave">Ave</option>
                 </select>
+                </div>
               </div>
 
-              <input type="submit" class="btn login_btn" value="¡Registrar!" /> <br>
+              <div class="mb-4">
+
+              </div>
+
+              <input type="submit" class="btn login_btn" value="Guardar preferencias" /> <br>
 
             </form>
 
@@ -80,38 +86,5 @@
     </div>
   </div>
 </section>
-	<div class="wrapper">
-		<h1>Registrar Preferencias</h1>
-
-		<form method="post" action="RegistrarPreferenciaController">
-
-				<input type="hidden" name="idMascota" value="${mascota.id }">
-		
-				<label> Nombre </label>
-				<input type="text" name="txtNombre" value="${mascota.nombre }">
-
-				
-			    <label for="txtId">Edad Minima</label> <input type="text" name="txtEdadMinima" id="txtEdadMinima" /> <br><br>
-			    <label for="txtId">Edad Máxima</label> <input type="text" name="txtEdadMaxima" id="txtEdadMaxima" /> <br> <br>
-                <label for="txtEspecie">Especie</label> 
-                <select name="txtEspecie" id="especie">
-                    <option value="Seleccione">Seleccione</option>
-                    <option value="Perro">Perro</option>
-                    <option value="Gato">Gato</option>
-                    <option value="Hammster">Hammster</option>
-                    <option value="Ave">Ave</option>
-                </select> <br><br>
-                <label for="txtSexo">Sexo</label>
-                <select name="txtSexo" id="sexo">
-                    <option value="seleccione">Seleccione</option>
-                    <option value="Macho">Macho</option>
-                    <option value="Hembra">Hembra</option>
-                </select> <br><br>
-               
-				<input type="submit" value="Registrar"/> <br>
-		</form>
-	</div>
-
-
 </body>
 </html>

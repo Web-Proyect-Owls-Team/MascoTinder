@@ -5,51 +5,55 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/login_styles.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Mis Mascotas</title>
 </head>
 <body>
 	<%@include file="../templates/banner_interno.html"%>
-	<h1>Mis Mascotas</h1>	
-	<div>
-		<a href="RegistrarMascotaController"> Nuevo </a>
+	<br>
+	<div class="col text-center">
+	<a class="btn btn-primary" href="RegistrarMascotaController" role="button"><i class="fa-solid fa-circle-plus"></i> Nueva mascota</a>
 	</div>
-	
-	<div>
-	<a href = "ListarProspectosController">Prospectos</a>
-	</div>
-	
+	<br>
 	<div class="wrapper">
-		<table class="table">
-			<thead class="thead-dark">
+		<table class="table align-middle mb-0 bg-white">
+			<thead class="bg-light">
 				<tr>
-					<td scope="col">id</td>
-					<td scope="col">Nombre</td>
-					<td scope="col">Acciones</td>
-					<td scope ="col">Prospectos</td>
-					<td scope="col"> Fotos <td/>
+					<th>Mascota</th>
+					<th>Acciones</th>
+					<th>Ver prospectos</th>
+					<th>Ver Matches</th>
 				</tr>
 			</thead>
+			<tbody>
 			<c:forEach items="${ mascotas }" var="m">
 				<tr>
-					<td>${m.id}</td>
-					<td>${m.nombre}</td>
-					<td><a href="RegistrarPreferenciaController?idMascota=${m.id}">
-							Preferences </a> | 
-							<a
-						href="#"> Eliminar </a></td>
-					<td><a href="ListarProspectosController?idMascota=${m.id} ">prospectos</a></td>
-					<td><a href="ListarCoincidenciasController?idMascota=${m.id} ">Matches</a></td>
+					<td>
+					<div class="d-flex align-items-center">
+					<img alt="Esta es una foto" src="${m.foto[0].foto}" style="width: 100px; height: 100px" class="rounded-circle">
+					<div class="ms-3">
+            <p class="fw-bold mb-1">${m.nombre}</p>
+            <p class="text-muted mb-0">ID de mascota: ${m.id}</p>
+          </div>
+          </div>
+					</td>
+					<td>
+					<a class="btn btn-secondary" href="RegistrarPreferenciaController?idMascota=${m.id}" role="button"><i class="fa-solid fa-gear"></i>  Preferencias</a> 
+					<a class="btn btn-danger" href="EliminarMascotaController?idMascota=${m.id}" role="button"><i class="fa-solid fa-trash"></i> Eliminar</a> 
+					<td>
+					<a class="btn btn-info" href="ListarProspectosController?idMascota=${m.id}" role="button"><i class="fa-solid fa-paw"></i> Ver prospectos</a> </td>
+					<td><a class="btn btn-success" href="ListarCoincidenciasController?idMascota=${m.id}" role="button"><i class="fa-solid fa-heart"></i> Ver Matches</a>
+					</td>
 				</tr>
 				 </tr>
-					<c:forEach items="${ m.foto }" var="f">
-						<tr>
-							<td> <img alt="Esta es una foto" src="${f.foto }" width="500px" height="500px"> </td>
-						</tr>
-					</c:forEach>
 
 			</c:forEach>
-			
+			</tbody>
 		</table>
 	</div>
 
