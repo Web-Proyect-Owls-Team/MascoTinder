@@ -19,8 +19,11 @@
 
     <!-- div para enviar los mensajes enviados-->
     <div id="enviarMensaje">
-        <form action="mensajes" method="post">
+        <form action="EnviarMensajeController" method="post">
             <input type="text" name="mensaje" id="mensaje">
+            <input type="text" name="coincidenciaId" value="${coincidencia.id}">
+            <input type="text" name="idMascotaMatch" value="${idMascotaMatch}">
+            <input type="text" name="idMiMascota" value="${idMiMascota}">
             <input type="submit" value="Enviar">
         </form>
 </body>
