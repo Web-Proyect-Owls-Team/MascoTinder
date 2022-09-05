@@ -1,7 +1,9 @@
 package com.modelo.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.modelo.entidades.Coincidencia;
 import com.modelo.entidades.Mascota;
 
 public interface MascotaDAO extends GenericDAO<Mascota, Integer>{
@@ -12,5 +14,8 @@ public interface MascotaDAO extends GenericDAO<Mascota, Integer>{
 	List<Mascota> getMascotasByIdPropietario(int idPropietario);
 	
 	List<Mascota> getProspectos(Mascota m);
-
+	
+	List<Mascota> getMascotasByCoincidencias(ArrayList<Coincidencia> pretendientes, ArrayList<Coincidencia> pretendidos );
+	
+	
 }

@@ -37,7 +37,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 					</td>
 					
 					<td>
-					<a class="btn btn-secondary" href="RegistrarPreferenciaController?idMascota=${m.id}" role="button"><i class="fa-solid fa-messages"></i>  Enviar mensaje</a> 
+					<a class="btn btn-secondary" href="ListarMensajesController?idMatch=${m.id}&idMiMascota=${miMascota.id}" role="button"><i class="fa-solid fa-messages"></i>  Enviar mensaje</a> 
 					</td>
 				</tr>
 

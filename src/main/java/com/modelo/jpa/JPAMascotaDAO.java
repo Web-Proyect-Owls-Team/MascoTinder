@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 import com.modelo.dao.MascotaDAO;
+import com.modelo.entidades.Coincidencia;
 import com.modelo.entidades.Mascota;
 
 public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements MascotaDAO{
@@ -69,6 +70,21 @@ public class JPAMascotaDAO extends JPAGenericDAO<Mascota, Integer> implements Ma
 			mascotas.add(auxMascota);
 		}
 		return mascotas;
+	}
+
+	@Override
+	public List<Mascota> getMascotasByCoincidencias(ArrayList<Coincidencia> coincidenciasPretendiente,
+			ArrayList<Coincidencia> coincidenciasPretendido) {
+		ArrayList<Mascota> matchs = new ArrayList<Mascota>();
+		for (Coincidencia c: coincidenciasPretendiente) {
+				matchs.add(c.getPretendido());
+		}
+		
+		for (Coincidencia c: coincidenciasPretendido) {
+				matchs.add(c.getPretendiente());
+		}
+		
+		return matchs;
 	} 
 
 
