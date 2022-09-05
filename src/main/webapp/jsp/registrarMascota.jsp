@@ -58,7 +58,7 @@
                 </div>
               </div>
 
-              <div class="mb-4">
+              <div class="form-outline mb-4">
               <label class="form-label" for="txtEspecie">Especie</label>
               
               <select name="txtEspecie" id="especie">
@@ -69,11 +69,11 @@
                     <option value="Ave">Ave</option>
                 </select>
               </div>
-              <div class="mb-4">
-                 <span>Copie y pegue la url de la foto de su mascota</span><br>
-                 <span>Foto 1 </span> <input type="text" name="txtFoto1"><br><br>
-                 <span>Foto 2  </span><input type="text" name="txtFoto2"> <br><br>
-                 <span>Foto 3 </span><input type="text" name="txtFoto3"><br><br>
+              <div class="form-outline mb-4">
+              <h6 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Copie y pegue las url de las fotos de su mascota</h6>
+                 <input type="text" name="txtFoto1" class="form-control" placeholder="URL de la foto 1"><br>
+                 <input type="text" name="txtFoto2" class="form-control" placeholder="URL de la foto 2"> <br>
+                 <input type="text" name="txtFoto3" class="form-control" placeholder="URL de la foto 3"><br>
                </div>
               	
 				

@@ -37,7 +37,7 @@
 					<td><a href="RegistrarPreferenciaController?idMascota=${m.id}">
 							Preferences </a> | 
 							<a
-						href="#"> Eliminar </a></td>
+						href="EliminarMascotaController?idMascota=${m.id}"> Eliminar </a></td>
 					<td><a href="ListarProspectosController?idMascota=${m.id} ">prospectos</a></td>
 					<td><a href="ListarCoincidenciasController?idMascota=${m.id} ">Matches</a></td>
 				</tr>
