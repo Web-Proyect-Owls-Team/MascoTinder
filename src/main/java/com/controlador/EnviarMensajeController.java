@@ -51,7 +51,7 @@ public class EnviarMensajeController extends HttpServlet {
 		Coincidencia coincidencia = DAOFactory.getFactory().getCoincidenciaDAO().getById(idCoincidencia);
 		Propietario propietarioEmisor = DAOFactory.getFactory().getPropietarioDAO().getById(idPropietario);
 		Mascota mascota = DAOFactory.getFactory().getMascotaDAO().getById(idMascotaMatch);
-		Propietario propietarioReceptor = DAOFactory.getFactory().getPropietarioDAO().getPropietarioByMascota(mascota);
+		Propietario propietarioReceptor = mascota.getPropietario();
 		// Models
 		Mensaje m = new Mensaje();
 		m.setMensaje(mensaje);

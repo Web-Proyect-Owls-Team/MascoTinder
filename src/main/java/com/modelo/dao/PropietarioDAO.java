@@ -8,5 +8,5 @@ public interface PropietarioDAO extends GenericDAO<Propietario, Integer> {
 
 	public Propietario autorizarPropietario(String usuario, String clave);
 	
-	public Propietario getPropietarioByMascota(Mascota m);
+
 }
