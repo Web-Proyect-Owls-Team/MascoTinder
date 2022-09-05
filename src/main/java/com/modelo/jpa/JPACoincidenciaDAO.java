@@ -40,34 +40,7 @@ public class JPACoincidenciaDAO   extends JPAGenericDAO<Coincidencia, Integer> i
 		return null;
 	}
 
-	@Override
-	public ArrayList<Coincidencia> getCoincidenciasAsPretendiente(Mascota m) {
-		
-		ArrayList<Coincidencia> coincidenciasPretendiente = new ArrayList<Coincidencia>();
-		List<?> soyPretendiente =  m.getCoincidenciasE();
-		
-		for (int i = 0; i < soyPretendiente.size(); i++ ) {
-			Coincidencia c = (Coincidencia) soyPretendiente.get(i);
-			if (c.getLike()) {
-				coincidenciasPretendiente.add(c);
-			}
-		}
-		return  coincidenciasPretendiente;
-	}
-
-	@Override
-	public ArrayList<Coincidencia> getCoincidenciasAsPretendido(Mascota m) {
-		ArrayList<Coincidencia> coincidenciasPretendido = new ArrayList<Coincidencia>();
-		List<?> soyPretendido =  m.getCoincidenciasR();
-		for (int i = 0; i < soyPretendido.size(); i++ ) {
-			Coincidencia c = (Coincidencia) soyPretendido.get(i);
-			if (c.getLike()) {
-				coincidenciasPretendido.add(c);
-			}
-			
-		}
-		return coincidenciasPretendido;
-	}
+	
 	
 	@Override
 	public Coincidencia getCoincidenciabById(int id) {

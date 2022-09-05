@@ -26,15 +26,7 @@ public class ListarProspectosController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		/*
-		 * // Get Parameters int idMascota; if (request.getAttribute("idMascota") !=
-		 * null) { idMascota = (int) request.getAttribute("idMascota"); } else {
-		 * idMascota = Integer.parseInt(request.getParameter("idMascota")); } // Call
-		 * Models Mascota mascota =
-		 * DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMascota); //
-		 * Dispatch //request.setAttribute("mascota", mascota);
-		 * 
-		 */
+
 		listarProspectos(request, response);
 
 	}

@@ -53,13 +53,11 @@ public class ListarCoincidenciasController  extends HttpServlet{
 		
 		// Models
 		Mascota miMascota = DAOFactory.getFactory().getMascotaDAO().getById(idMiMascota);
-		System.out.println("id Mascota : " + miMascota.getId());
-		ArrayList<Coincidencia> coincidenciasPretendiente = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidenciasAsPretendiente(miMascota);
-		System.out.println("c1: " + coincidenciasPretendiente);
-		ArrayList<Coincidencia> coincidenciasPretendido = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidenciasAsPretendido(miMascota);
-		System.out.println("c2: " + coincidenciasPretendido);
-		
-		ArrayList<Mascota> matchs = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO().getMascotasByCoincidencias(coincidenciasPretendiente, coincidenciasPretendido);
+
+		ArrayList<Coincidencia> coincidenciasPretendiente = getCoincidenciasAsPretendiente(miMascota);
+		ArrayList<Coincidencia> coincidenciasPretendido = getCoincidenciasAsPretendido(miMascota);
+	
+		ArrayList<Mascota> matchs = (ArrayList<Mascota>) getMascotasByCoincidencias(coincidenciasPretendiente, coincidenciasPretendido);
 		
 
 		request.setAttribute("match", matchs);
@@ -67,6 +65,47 @@ public class ListarCoincidenciasController  extends HttpServlet{
 		
 		request.getRequestDispatcher("jsp/listarCoincidencias.jsp").forward(request, response);
 	}
-
 	
+
+	private ArrayList<Coincidencia> getCoincidenciasAsPretendiente(Mascota m) {
+		
+		ArrayList<Coincidencia> coincidenciasPretendiente = new ArrayList<Coincidencia>();
+		List<?> soyPretendiente =  m.getCoincidenciasE();
+		
+		for (int i = 0; i < soyPretendiente.size(); i++ ) {
+			Coincidencia c = (Coincidencia) soyPretendiente.get(i);
+			if (c.getLike()) {
+				coincidenciasPretendiente.add(c);
+			}
+		}
+		return  coincidenciasPretendiente;
+	}
+
+
+	private ArrayList<Coincidencia> getCoincidenciasAsPretendido(Mascota m) {
+		ArrayList<Coincidencia> coincidenciasPretendido = new ArrayList<Coincidencia>();
+		List<?> soyPretendido =  m.getCoincidenciasR();
+		for (int i = 0; i < soyPretendido.size(); i++ ) {
+			Coincidencia c = (Coincidencia) soyPretendido.get(i);
+			if (c.getLike()) {
+				coincidenciasPretendido.add(c);
+			}
+			
+		}
+		return coincidenciasPretendido;
+	}
+
+	private List<Mascota> getMascotasByCoincidencias(ArrayList<Coincidencia> coincidenciasPretendiente,
+			ArrayList<Coincidencia> coincidenciasPretendido) {
+		ArrayList<Mascota> matchs = new ArrayList<Mascota>();
+		for (Coincidencia c: coincidenciasPretendiente) {
+				matchs.add(c.getPretendido());
+		}
+		
+		for (Coincidencia c: coincidenciasPretendido) {
+				matchs.add(c.getPretendiente());
+		}
+		
+		return matchs;
+	} 
 }
