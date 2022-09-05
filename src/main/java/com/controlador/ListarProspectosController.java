@@ -27,17 +27,12 @@ public class ListarProspectosController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		/*
-		// Get Parameters
-		int idMascota;
-		if (request.getAttribute("idMascota") != null) {
-			idMascota =  (int) request.getAttribute("idMascota");
-		} else {
-			idMascota = Integer.parseInt(request.getParameter("idMascota"));
-		}
-		// Call Models
-		Mascota mascota = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMascota);
-		// Dispatch 
-		//request.setAttribute("mascota", mascota);
+		 * // Get Parameters int idMascota; if (request.getAttribute("idMascota") !=
+		 * null) { idMascota = (int) request.getAttribute("idMascota"); } else {
+		 * idMascota = Integer.parseInt(request.getParameter("idMascota")); } // Call
+		 * Models Mascota mascota =
+		 * DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idMascota); //
+		 * Dispatch //request.setAttribute("mascota", mascota);
 		 * 
 		 */
 		listarProspectos(request, response);
@@ -56,21 +51,25 @@ public class ListarProspectosController extends HttpServlet {
 		// Get Parameters
 		int miMascotaID;
 		if (request.getAttribute("idMascota") != null) {
-			miMascotaID =  (int) request.getAttribute("idMascota");
+			miMascotaID = (int) request.getAttribute("idMascota");
 		} else {
 			miMascotaID = Integer.parseInt(request.getParameter("idMascota"));
 		}
 
 		// Call Models
 		Mascota miMascota = DAOFactory.getFactory().getMascotaDAO().getById(miMascotaID);
-		ArrayList<Mascota> prospectos = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO()
-				.getProspectos(miMascota);
+		if (miMascota.getPreferencia() != null) {
+			ArrayList<Mascota> prospectos = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO()
+					.getProspectos(miMascota);
 
-		if (prospectos.size() > 0) {
-			int index = (int) (Math.random() * prospectos.size());
-			request.setAttribute("prospecto", prospectos.get(index));
-			request.setAttribute("miMascota", miMascota);
+			if (prospectos.size() > 0) {
+				int index = (int) (Math.random() * prospectos.size());
+				request.setAttribute("prospecto", prospectos.get(index));
+				request.setAttribute("miMascota", miMascota);
+			}
+
 		}
+
 		// Dispatch
 		request.getRequestDispatcher("jsp/listarProspectos.jsp").forward(request, response);
 

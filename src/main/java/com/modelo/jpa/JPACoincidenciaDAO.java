@@ -28,7 +28,7 @@ public class JPACoincidenciaDAO   extends JPAGenericDAO<Coincidencia, Integer> i
 	@Override
 	public Coincidencia getCoincidencia(int idPretendido, int idPretendiente) {
 		
-		String sentenciaJPQL = "SELECT c from Coincidencia c WHERE c.idPretendido = :id_pretendiente AND "
+		String sentenciaJPQL = "SELECT c from Coincidencia c WHERE c.pretendido.id = :id_pretendiente AND "
 				+ "c.pretendiente.id = :id_pretendido";
 		Query q = this.em.createQuery(sentenciaJPQL);
 		q.setParameter("id_pretendiente", idPretendiente);
@@ -39,15 +39,16 @@ public class JPACoincidenciaDAO   extends JPAGenericDAO<Coincidencia, Integer> i
 		}
 		return null;
 	}
+	
+	/*
 
 	@Override
 	public List<Mascota> getCoincidencias(Mascota m, boolean conLike) {
 		
 		int idMascotaPretendiente = m.getId();
 		
-		String sentenciaJPQL = "SELECT c from Coincidencia c WHERE c.Pretendiente.id = : id_pretendiente AND"
-		+ "c.conlike = : con_like";
-		
+		String sentenciaJPQL = "SELECT c from Coincidencia c WHERE c.pretendiente.id = :id_pretendiente AND "
+		+ "c.like = :con_like";
 		Query q = this.em.createQuery(sentenciaJPQL);
 		q.setParameter("id_pretendiente", idMascotaPretendiente);
 		q.setParameter("con_like", conLike);
@@ -74,7 +75,7 @@ public class JPACoincidenciaDAO   extends JPAGenericDAO<Coincidencia, Integer> i
 	
 	public Mascota buscarPretendido(int idPretendido){
 		
-		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.id = : id";
+		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.id = :id";
 		
 		Query q = this.em.createQuery(sentenciaJPQL);
 		q.setParameter("id", idPretendido);
@@ -86,7 +87,7 @@ public class JPACoincidenciaDAO   extends JPAGenericDAO<Coincidencia, Integer> i
 		
 	}
 
-	
+	*/
 
 
 
