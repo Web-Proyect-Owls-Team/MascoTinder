@@ -51,7 +51,17 @@ body, html {
 	color: white !important;
 }
 
+.logout_btn {
+	width: 10%;
+	background: #670039 !important;
+	color: white !important;
+}
+
 .login_btn:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+.logout_btn:focus {
 	box-shadow: none !important;
 	outline: 0px !important;
 }
@@ -70,6 +80,10 @@ body, html {
 .input_user, .input_pass:focus {
 	box-shadow: none !important;
 	outline: 0px !important;
+}
+
+.img {
+	width: 300px;
 }
 
 @media (min-width: 1025px) {
