@@ -7,6 +7,7 @@ import com.modelo.dao.CoincidenciaDAO;
 import com.modelo.dao.DAOFactory;
 import com.modelo.dao.FotoDAO;
 import com.modelo.dao.MascotaDAO;
+import com.modelo.dao.MensajeDAO;
 import com.modelo.dao.PreferenciaDAO;
 import com.modelo.dao.PropietarioDAO;
 
@@ -40,6 +41,11 @@ public class JPADAOFactory extends DAOFactory {
 	public CoincidenciaDAO getCoincidenciaDAO() {
 		
 		return new JPACoincidenciaDAO();
+	}
+
+	@Override
+	public MensajeDAO getMensajeDAO() {
+		return new JPAMensajeDAO();
 	}
 
 

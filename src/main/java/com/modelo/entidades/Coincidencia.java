@@ -71,6 +71,14 @@ public class Coincidencia implements Serializable {
 	public void setPretendido(Mascota pretendido) {
 		this.pretendido = pretendido;
 	}
+	
+	
+	public List<Mensaje> getMensajes() {
+		return mensajes;
+	}
+	public void setMensajes(List<Mensaje> mensajes) {
+		this.mensajes = mensajes;
+	}
 	@Override
 	public String toString() {
 		return "Coincidencia [id=" + id + ", like=" + like + ", pretendiente=" + pretendiente + ", pretendido="

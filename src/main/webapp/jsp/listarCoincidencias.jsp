@@ -22,13 +22,14 @@
 				<tr>
 					<td scope="col">id</td>
 					<td scope="col">Nombre</td>
+					<td scope="col">Mensajes</td>
 				</tr>
 			</thead>
 			<c:forEach items="${ match }" var="m">
 				<tr>
 					<td>${m.id}</td>
 					<td>${m.nombre}</td>
-					
+					<td><a href="ListarMensajesController?idMatch=${m.id}&idMiMascota=${miMascota.id} ">Mensajes</a></td>
 				</tr>
 			</c:forEach>
 			

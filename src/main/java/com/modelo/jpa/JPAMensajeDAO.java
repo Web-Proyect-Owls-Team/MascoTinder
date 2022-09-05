@@ -1,12 +1,16 @@
 package com.modelo.jpa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Query;
 
 import com.modelo.dao.MensajeDAO;
+import com.modelo.entidades.Coincidencia;
+import com.modelo.entidades.Mascota;
 import com.modelo.entidades.Mensaje;
 
-
-public class JPAMensajeDAO extends JPAGenericDAO<Mensaje, Integer>  implements MensajeDAO{
+public class JPAMensajeDAO extends JPAGenericDAO<Mensaje, Integer> implements MensajeDAO {
 
 	public JPAMensajeDAO() {
 		super(Mensaje.class);
@@ -27,7 +31,17 @@ public class JPAMensajeDAO extends JPAGenericDAO<Mensaje, Integer>  implements M
 	public void setMensajeByIDPropietario(int idPropietario) {
 		// Enviar mensaje por propietario
 
-		
+	}
+
+	@Override
+	public ArrayList<Mensaje> getMensajesByCoincidencia(Coincidencia c) {
+		ArrayList<Mensaje> mensajes = new ArrayList<Mensaje>();
+		List<?> aux = c.getMensajes();
+		for(int i = 0; i < aux.size(); i++) {
+			Mensaje auxMensaje = (Mensaje) aux.get(i);
+			mensajes.add(auxMensaje);
+		}
+		return mensajes;
 	}
 
 }
