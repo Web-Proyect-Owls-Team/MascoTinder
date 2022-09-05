@@ -54,7 +54,7 @@
                 <div class="col-md-6 mb-4">
                 <br>
                   <label class="form-label" for="txtSexo">Sexo</label>
-                  <select class="select name="txtSexo" id="sexo">
+                  <select name="txtSexo" id="txtSexo">
                     <option value="seleccione" disabled>Sexo</option>
                     <option value="Macho">Macho</option>
                     <option value="Hembra">Hembra</option>
