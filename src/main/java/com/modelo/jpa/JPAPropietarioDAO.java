@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Query;
 
 import com.modelo.dao.PropietarioDAO;
+import com.modelo.entidades.Mascota;
 import com.modelo.entidades.Propietario;
 
 public class JPAPropietarioDAO extends JPAGenericDAO<Propietario, Integer> implements PropietarioDAO {
@@ -12,6 +13,12 @@ public class JPAPropietarioDAO extends JPAGenericDAO<Propietario, Integer> imple
 	public JPAPropietarioDAO() {
 		super(Propietario.class);
 	}
+	
+	@Override
+	public Propietario getPropietarioByMascota(Mascota m){
+		return m.getPropietario();
+	}
+
 
 	@Override
 	public Propietario autorizarPropietario(String usuario, String clave) {

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.modelo.dao.DAOFactory;
 import com.modelo.entidades.Coincidencia;
 import com.modelo.entidades.Mensaje;
+import com.modelo.entidades.Propietario;
 
 /**
  * Servlet implementation class ListarMensajesController
@@ -37,22 +38,22 @@ public class ListarMensajesController extends HttpServlet {
 		int idMascotaMatch = Integer.parseInt(request.getParameter("idMatch"));
 		int idMiMascota = Integer.parseInt(request.getParameter("idMiMascota"));
 		
-		System.out.println("mio: " + idMiMascota);
-		System.out.println("ob: "+ idMascotaMatch);
+		
 		Coincidencia coincidencia = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidencia(idMascotaMatch, idMiMascota);
-		System.out.println(coincidencia);
+
 		if (coincidencia == null) {
 			coincidencia = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidencia(idMiMascota, idMascotaMatch);
 		}
-		System.out.println(coincidencia);
+
 		// 2.- Llamar al modelo
 		ArrayList <Mensaje> mensajes = DAOFactory.getFactory().getMensajeDAO().getMensajesByCoincidencia(coincidencia);
 		
-		System.out.println("listMen" + mensajes);
+		
 		// 3.- Forward to view
-		
 		request.setAttribute("mensajes", mensajes);
-		
+		request.setAttribute("coincidencia", coincidencia);
+		request.setAttribute("idMascotaMatch", idMascotaMatch);
+		request.setAttribute("idMiMascota", idMiMascota);
 		
 		request.getRequestDispatcher("jsp/listarMensajes.jsp").forward(request, response);
 
@@ -63,6 +64,27 @@ public class ListarMensajesController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		int idMascotaMatch = (int) request.getAttribute("idMatch");
+		int idMiMascota = (int) request.getAttribute("idMiMascota");
+		
+		
+		Coincidencia coincidencia = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidencia(idMascotaMatch, idMiMascota);
+
+		if (coincidencia == null) {
+			coincidencia = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidencia(idMiMascota, idMascotaMatch);
+		}
+
+		// 2.- Llamar al modelo
+		ArrayList <Mensaje> mensajes = DAOFactory.getFactory().getMensajeDAO().getMensajesByCoincidencia(coincidencia);
+		
+		
+		// 3.- Forward to view
+		request.setAttribute("mensajes", mensajes);
+		request.setAttribute("coincidencia", coincidencia);
+		request.setAttribute("idMascotaMatch", idMascotaMatch);
+		request.setAttribute("idMiMascota", idMiMascota);
+		
+		request.getRequestDispatcher("jsp/listarMensajes.jsp").forward(request, response);
 	}
 
 }
