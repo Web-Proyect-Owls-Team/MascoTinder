@@ -1,6 +1,8 @@
 package com.modelo.entidades;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "Coincidencia")
 
@@ -27,9 +30,14 @@ public class Coincidencia implements Serializable {
 	@JoinColumn(name = "pretendiente")
 	private Mascota pretendiente;
 	
+
+	@OneToMany(mappedBy = "coincidencia")
+	private List<Mensaje> mensajes;
+
 	@ManyToOne
 	@JoinColumn(name = "pretendido")
 	private Mascota pretendido;
+
 	
 	public Coincidencia() {
 	}
@@ -62,6 +70,14 @@ public class Coincidencia implements Serializable {
 	}
 	public void setPretendido(Mascota pretendido) {
 		this.pretendido = pretendido;
+	}
+	
+	
+	public List<Mensaje> getMensajes() {
+		return mensajes;
+	}
+	public void setMensajes(List<Mensaje> mensajes) {
+		this.mensajes = mensajes;
 	}
 	@Override
 	public String toString() {

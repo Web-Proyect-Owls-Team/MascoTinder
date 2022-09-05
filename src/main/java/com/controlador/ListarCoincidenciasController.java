@@ -63,7 +63,8 @@ public class ListarCoincidenciasController  extends HttpServlet{
 		
 
 		request.setAttribute("match", matchs);
-	
+		request.setAttribute("miMascota", miMascota);
+		
 		request.getRequestDispatcher("jsp/listarCoincidencias.jsp").forward(request, response);
 	}
 

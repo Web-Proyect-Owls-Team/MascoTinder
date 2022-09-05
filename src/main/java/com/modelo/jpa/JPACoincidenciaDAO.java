@@ -69,6 +69,21 @@ public class JPACoincidenciaDAO   extends JPAGenericDAO<Coincidencia, Integer> i
 		return coincidenciasPretendido;
 	}
 	
+	@Override
+	public Coincidencia getCoincidenciabById(int id) {
+		
+		String sentenciaJPQL = "SELECT c from Coincidencia c WHERE c.id = :id";
+		Query q = this.em.createQuery(sentenciaJPQL);
+		q.setParameter("id", id);
+		
+		Coincidencia coincidencia = (Coincidencia) q.getSingleResult();
+		
+		
+		return coincidencia;
+		
+	}
+
+	
 
 
 
