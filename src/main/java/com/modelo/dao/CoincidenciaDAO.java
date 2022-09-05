@@ -11,6 +11,6 @@ public interface CoincidenciaDAO extends GenericDAO<Coincidencia, Integer>{
 	
 	public Coincidencia getCoincidencia(int idPretendido, int idPretendiente);
 	
-	public List<Mascota> getCoincidencias (Mascota m, boolean conLike);
+	
 
 }
