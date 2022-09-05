@@ -14,11 +14,7 @@ public class JPAPropietarioDAO extends JPAGenericDAO<Propietario, Integer> imple
 		super(Propietario.class);
 	}
 	
-	@Override
-	public Propietario getPropietarioByMascota(Mascota m){
-		return m.getPropietario();
-	}
-
+	
 
 	@Override
 	public Propietario autorizarPropietario(String usuario, String clave) {
