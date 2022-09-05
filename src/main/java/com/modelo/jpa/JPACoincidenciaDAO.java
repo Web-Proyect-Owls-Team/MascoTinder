@@ -28,7 +28,7 @@ public class JPACoincidenciaDAO   extends JPAGenericDAO<Coincidencia, Integer> i
 	@Override
 	public Coincidencia getCoincidencia(int idPretendido, int idPretendiente) {
 		
-		String sentenciaJPQL = "SELECT c from Coincidencia c WHERE c.idPretendido = :id_pretendiente AND "
+		String sentenciaJPQL = "SELECT c from Coincidencia c WHERE c.pretendido.id = :id_pretendiente AND "
 				+ "c.pretendiente.id = :id_pretendido";
 		Query q = this.em.createQuery(sentenciaJPQL);
 		q.setParameter("id_pretendiente", idPretendiente);
@@ -41,52 +41,35 @@ public class JPACoincidenciaDAO   extends JPAGenericDAO<Coincidencia, Integer> i
 	}
 
 	@Override
-	public List<Mascota> getCoincidencias(Mascota m, boolean conLike) {
+	public ArrayList<Coincidencia> getCoincidenciasAsPretendiente(Mascota m) {
 		
-		int idMascotaPretendiente = m.getId();
+		ArrayList<Coincidencia> coincidenciasPretendiente = new ArrayList<Coincidencia>();
+		List<?> soyPretendiente =  m.getCoincidenciasE();
 		
-		String sentenciaJPQL = "SELECT c from Coincidencia c WHERE c.Pretendiente.id = : id_pretendiente AND"
-		+ "c.conlike = : con_like";
-		
-		Query q = this.em.createQuery(sentenciaJPQL);
-		q.setParameter("id_pretendiente", idMascotaPretendiente);
-		q.setParameter("con_like", conLike);
-		
-		ArrayList<Mascota> mascotasCoincidentes = new ArrayList<Mascota>();
-		
-		List<?> aux = q.getResultList();
-		
-		for(int i = 0; i < aux.size();i++) {
-			
-			Coincidencia coincidencia = (Coincidencia) aux.get(i);
-			int idPretendido = coincidencia.getIdPretendido();
-			
-			mascotasCoincidentes.add(buscarPretendido(idPretendido));
-			
+		for (int i = 0; i < soyPretendiente.size(); i++ ) {
+			Coincidencia c = (Coincidencia) soyPretendiente.get(i);
+			if (c.getLike()) {
+				coincidenciasPretendiente.add(c);
+			}
 		}
-		
-		
-		
-		return mascotasCoincidentes;
-		
-		
-	}
-	
-	public Mascota buscarPretendido(int idPretendido){
-		
-		String sentenciaJPQL = "SELECT m from Mascota m WHERE m.id = : id";
-		
-		Query q = this.em.createQuery(sentenciaJPQL);
-		q.setParameter("id", idPretendido);
-		
-		Mascota mascota = (Mascota)q.getSingleResult();
-		
-		
-		return mascota;
-		
+		return  coincidenciasPretendiente;
 	}
 
+	@Override
+	public ArrayList<Coincidencia> getCoincidenciasAsPretendido(Mascota m) {
+		ArrayList<Coincidencia> coincidenciasPretendido = new ArrayList<Coincidencia>();
+		List<?> soyPretendido =  m.getCoincidenciasR();
+		for (int i = 0; i < soyPretendido.size(); i++ ) {
+			Coincidencia c = (Coincidencia) soyPretendido.get(i);
+			if (c.getLike()) {
+				coincidenciasPretendido.add(c);
+			}
+			
+		}
+		return coincidenciasPretendido;
+	}
 	
+
 
 
 

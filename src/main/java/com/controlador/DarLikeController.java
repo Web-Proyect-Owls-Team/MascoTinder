@@ -34,14 +34,17 @@ public class DarLikeController extends HttpServlet {
 		int idPretendido = Integer.parseInt( request.getParameter("idPretendido"));
 		
 		// Models
+		
 		Coincidencia coincidencia = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidencia(idPretendido, idPretendiente);
 		if (coincidencia != null) {
 			coincidencia.setLike(true);
 			DAOFactory.getFactory().getCoincidenciaDAO().update(coincidencia);
 			
 		} else {
-			crearCoincidencia(idPretendido, idPretendiente);
-			
+			coincidencia = DAOFactory.getFactory().getCoincidenciaDAO().getCoincidencia(idPretendiente, idPretendido);
+			if (coincidencia == null) {
+				crearCoincidencia(idPretendido, idPretendiente);
+			}
 		}
 		// Dispatch request
 		request.setAttribute("idMascota", idPretendiente);
@@ -57,16 +60,17 @@ public class DarLikeController extends HttpServlet {
 	
 	
 	private void crearCoincidencia(int idPretendido, int idPretendiente) {
-		Coincidencia c = new Coincidencia();
-		c.setIdPretendido(idPretendido);
-		c.setLike(false);
+		// Create
+		Coincidencia coincidencia = new Coincidencia();
+		coincidencia.setLike(false);
+		DAOFactory.getFactory().getCoincidenciaDAO().create(coincidencia);
+		// Update
+		Mascota pretendido = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idPretendido);
+		coincidencia.setPretendido(pretendido);
+		Mascota pretendiente = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idPretendiente);
+		coincidencia.setPretendiente(pretendiente);
 		
-		DAOFactory.getFactory().getCoincidenciaDAO().create(c);
-		
-		Mascota m = DAOFactory.getFactory().getMascotaDAO().getMascotaByID(idPretendiente);
-		c.setPretendiente(m);
-		
-		DAOFactory.getFactory().getCoincidenciaDAO().update(c);
+		DAOFactory.getFactory().getCoincidenciaDAO().update(coincidencia);
 	}
 
 }

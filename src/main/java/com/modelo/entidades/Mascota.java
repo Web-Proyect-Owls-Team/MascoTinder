@@ -53,9 +53,10 @@ public class Mascota  implements Serializable{
 
 	
 	@OneToMany (mappedBy = "pretendiente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Coincidencia> coincidencias;
+	private List<Coincidencia> coincidenciasE;
 
-	
+	@OneToMany (mappedBy = "pretendido", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Coincidencia> coincidenciasR;
 	//Constructor sin parametros
 	public Mascota() {
 		
@@ -137,6 +138,24 @@ public class Mascota  implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	
+
+	public List<Coincidencia> getCoincidenciasE() {
+		return coincidenciasE;
+	}
+
+	public void setCoincidenciasE(List<Coincidencia> coincidenciasE) {
+		this.coincidenciasE = coincidenciasE;
+	}
+
+	public List<Coincidencia> getCoincidenciasR() {
+		return coincidenciasR;
+	}
+
+	public void setCoincidenciasR(List<Coincidencia> coincidenciasR) {
+		this.coincidenciasR = coincidenciasR;
 	}
 
 	@Override

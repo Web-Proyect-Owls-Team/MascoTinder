@@ -22,9 +22,6 @@ public class Coincidencia implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	@Column(name = "id_pretendido")
-	private int idPretendido;
 	
 	@Column(name = "con_like")
 	private boolean like;
@@ -33,8 +30,14 @@ public class Coincidencia implements Serializable {
 	@JoinColumn(name = "pretendiente")
 	private Mascota pretendiente;
 	
+
 	@OneToMany(mappedBy = "coincidencia")
 	private List<Mensaje> mensajes;
+
+	@ManyToOne
+	@JoinColumn(name = "pretendido")
+	private Mascota pretendido;
+
 	
 	public Coincidencia() {
 	}
@@ -47,13 +50,6 @@ public class Coincidencia implements Serializable {
 		this.id = id;
 	}
 
-	public int getIdPretendido() {
-		return idPretendido;
-	}
-
-	public void setIdPretendido(int id) {
-		this.idPretendido = id;
-	}
 
 	public Mascota getPretendiente() {
 		return pretendiente;
@@ -63,11 +59,22 @@ public class Coincidencia implements Serializable {
 		this.pretendiente = mascota;
 	}
 
-	public boolean isLike() {
+	public boolean getLike() {
 		return like;
 	}
 	public void setLike(boolean like) {
 		this.like = like;
+	}
+	public Mascota getPretendido() {
+		return pretendido;
+	}
+	public void setPretendido(Mascota pretendido) {
+		this.pretendido = pretendido;
+	}
+	@Override
+	public String toString() {
+		return "Coincidencia [id=" + id + ", like=" + like + ", pretendiente=" + pretendiente + ", pretendido="
+				+ pretendido + "]";
 	}
 	
 	
