@@ -6,31 +6,36 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Mis Prospectos</title>
 </head>
 <body>
 
 	<%@include file="../templates/banner_interno.html"%>
-	<h1>Mis Prospectos</h1>
-	<div>
-		<a href="ListarMascotasController"> Volver </a>
-	</div>
 	<div class="wrapper">
-		<table class="table">
-			<thead class="thead-dark">
+		<table class="table align-middle mb-0 bg-white">
+			<thead class="bg-light">
 				<tr>
-					<td scope="col">id</td>
-					<td scope="col">Nombre</td>
-					<td scope ="col">No Like</td>
-					<td scope ="col">Like</td>
+					<th>Mascota</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 		
 				<tr>
-					<td>${prospecto.id}</td>
-					<td>${prospecto.nombre}</td>
-					<td><a href="ListarProspectosController?idMascota=${miMascota.id}"> No Like </a> | 
-						<a href="DarLikeController?idPretendido=${prospecto.id}&idPretendiente=${miMascota.id}"> Like </a></td>
+					<td><div class="d-flex align-items-center">
+					<img alt="Esta es una foto" src="${prospecto.foto[0].foto}" style="width: 100px; height: 100px" class="rounded-circle">
+					<div class="ms-3">
+            <p class="fw-bold mb-1">${prospecto.nombre}</p>
+            <p class="text-muted mb-0">ID de prospecto: ${prospecto.id}</p>
+          </div>
+          </div></td>
+					<td>
+										<a class="btn btn-primary" href="DarLikeController?idPretendido=${prospecto.id}&idPretendiente=${miMascota.id}" role="button"><i class="fa-solid fa-thumbs-up"></i>  Like</a> 
+					<a class="btn btn-danger" href="ListarProspectosController?idMascota=${miMascota.id}" role="button"><i class="fa-solid fa-thumbs-down"></i> Dislike</a> 
+						
+						</td>
 				</tr>
 			
 		</table>
