@@ -10,9 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.eclipse.persistence.annotations.CascadeOnDelete;
+
 
 @Entity(name = "Foto")
-
+@CascadeOnDelete
 public class Foto implements Serializable {
 
 	
