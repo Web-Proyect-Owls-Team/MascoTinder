@@ -37,7 +37,7 @@
             <input type="hidden" name="idMascota" value="${mascota.id }">
 
               <div class="form-outline mb-4">
-                <input type="text" name="txtNombre" id="txtNombre" value="${mascota.nombre }" class="form-control" />
+                <input type="hidden" name="txtNombre" id="txtNombre" value="${mascota.nombre }" class="form-control" />
               </div>
 
               <div class="row">

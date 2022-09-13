@@ -48,14 +48,14 @@ public class DarLikeController extends HttpServlet {
 		}
 		// Dispatch request
 		request.setAttribute("idMascota", idPretendiente);
-		request.getRequestDispatcher("ListarProspectosController").forward(request, response);
+		request.getRequestDispatcher("ListarMascotasController").forward(request, response);
 
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("ListarProspectosController").forward(request, response);
+		request.getRequestDispatcher("ListarMascotasController").forward(request, response);
 	}
 	
 	

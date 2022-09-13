@@ -31,7 +31,7 @@
 				</div>
 				<div class="d-flex justify-content-center form_container">
 				
-					<form method="post" action="LoginController">
+					<form method="post" action="LoginController" class ="needs-validation">
 									<div>
 				<h1>MascoTinder</h1>
 				</div>
@@ -39,13 +39,13 @@
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="usuario" class="form-control input_user" value="" placeholder="Nombre de usuario">
+							<input type="text" name="usuario" class="form-control input_user" value="" placeholder="Nombre de usuario" required>
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" name="clave" class="form-control input_pass" value="" placeholder="Contraseña">
+							<input type="password" name="clave" class="form-control input_pass" value="" placeholder="Contraseña" required>
 						</div>
 							<div class="d-flex justify-content-center mt-3 login_container">
 				 	<input type="submit" value="Iniciar" class="btn login_btn">
