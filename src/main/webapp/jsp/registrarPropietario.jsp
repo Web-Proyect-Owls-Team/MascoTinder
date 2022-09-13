@@ -38,21 +38,22 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre" />
+                      <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre" required pattern="^[A-Za-z]+((\s)?([A-Za-z])+)*$" title="Ingresa un nombre válido" />
                     </div>
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user-tag fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" name="txtUsuario" id="txtUsuario" class="form-control" placeholder="Usuario"  />
+                      <input type="text" name="txtUsuario" id="txtUsuario" class="form-control" placeholder="Usuario" required  pattern="^([A-Za-z])+$" title="Ingresa un usuario válido"/>
                     </div>
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" name="txtClave" id="txtClave" class="form-control" placeholder="Contraseña" />
+                      <input type="password" name="txtClave" id="txtClave" class="form-control" placeholder="Contraseña" required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" title="La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+NO puede tener otros símbolos." />
                     </div>
                   </div>
 

@@ -46,7 +46,7 @@
 
                   <div class="form-outline datepicker">
                   <label class="form-label" for="txtFechaNacimiento">Edad</label>
-                    <input type="number" class="form-control" name="txtFechaNacimiento" id="txtFechaNacimiento" value="${mascota.edad}" /> <br> <br>
+                    <input type="number" class="form-control" name="txtFechaNacimiento" id="txtFechaNacimiento" value="${mascota.edad}" required min="1" pattern="^[0-9]+"  max="15"/> <br> <br>
                   </div>
 
                 </div>

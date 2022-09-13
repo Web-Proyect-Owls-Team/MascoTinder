@@ -3,6 +3,7 @@ package com.modelo.entidades;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,15 +27,15 @@ public class Coincidencia implements Serializable {
 	@Column(name = "con_like")
 	private boolean like;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name = "pretendiente")
 	private Mascota pretendiente;
 	
 
-	@OneToMany(mappedBy = "coincidencia")
+	@OneToMany(mappedBy = "coincidencia", cascade=CascadeType.REMOVE)
 	private List<Mensaje> mensajes;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name = "pretendido")
 	private Mascota pretendido;
 
