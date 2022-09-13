@@ -45,9 +45,9 @@
 
                   <div class="form-outline datepicker">		
                   <label class="form-label" for="txtEdadMinima">Edad mínima</label>	    
-                    <input type="number" class="form-control" name="txtEdadMinima" id="txtEdadMinima" placeholder="${mascota.preferencia.edadMinima}" /> <br>
+                    <input type="number" class="form-control" name="txtEdadMinima" id="txtEdadMinima" placeholder="${mascota.preferencia.edadMinima}" min="1" pattern="^[0-9]+" max="15"/> <br>
                     <label class="form-label" for=txtEdadMaxima>Edad máxima</label>	 
-                    <input type="number" class="form-control" name="txtEdadMaxima" id="txtEdadMaxima" placeholder="${mascota.preferencia.edadMaxima}" /> <br> 
+                    <input type="number" class="form-control" name="txtEdadMaxima" id="txtEdadMaxima" placeholder="${mascota.preferencia.edadMaxima}" min="1" pattern="^[0-9]+"  max="15"/> <br> 
                   </div>
 
                 </div>

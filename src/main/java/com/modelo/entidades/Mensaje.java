@@ -21,15 +21,15 @@ public class Mensaje implements Serializable {
 	@Column(name="id_mensaje")
 	private String mensaje;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id_Coincidencia")
 	private Coincidencia coincidencia;
 
-	@ManyToOne
+	@ManyToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="m_emisor")
 	private Propietario emisor;
 
-	@ManyToOne
+	@ManyToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="m_receptor")
 	private Propietario receptor;
 

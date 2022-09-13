@@ -36,14 +36,14 @@
             <form method="post" action="RegistrarMascotaController" class="px-md-2">
 
               <div class="form-outline mb-4">
-                <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre de la mascota"/>
+                <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Nombre de la mascota" pattern="^([A-Za-z])+$" title="Ingresa un nombre de mascota válido"/>
               </div>
 
               <div class="row">
                 <div class="col-md-6 mb-4">
 
                   <div class="form-outline datepicker">
-                    <input type="number" class="form-control" name="txtFechaNacimiento" id="txtFechaNacimiento" placeholder="Edad de la mascota" /> <br> <br>
+                    <input type="number" class="form-control" name="txtFechaNacimiento" id="txtFechaNacimiento" placeholder="Edad de la mascota"  required min="1" pattern="^[0-9]+"  max="15"/> <br> <br>
                   </div>
 
                 </div>

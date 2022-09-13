@@ -2,6 +2,7 @@ package com.modelo.entidades;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Foto implements Serializable {
 	@Column(name = "foto")
 	private String foto;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	@JoinColumn(name = "id_mascota")
 	private Mascota mascota;
 

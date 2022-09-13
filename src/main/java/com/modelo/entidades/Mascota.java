@@ -45,7 +45,7 @@ public class Mascota  implements Serializable{
 	//@OneToMany(mappedBy = "pretendiente", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
 	//private List <Match> match;
 	
-	@OneToOne @JoinColumn
+	@OneToOne(cascade=CascadeType.REMOVE) @JoinColumn
     private Preferencia preferencia;
 
 	// Foto
