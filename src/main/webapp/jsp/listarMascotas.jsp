@@ -38,12 +38,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 					<img alt="Esta es una foto" src="${m.foto[0].foto}" style="width: 100px; height: 100px" class="rounded-circle">
 					<div class="ms-3">
             <p class="fw-bold mb-1">${m.nombre}</p>
-            <p class="text-muted mb-0">ID de mascota: ${m.id}</p>
+            <p class="text-muted mb-0">Edad: ${m.edad}</p>
+            <p class="text-muted mb-0">Sexo: ${m.sexo}</p>
+            <p class="text-muted mb-0">Especie: ${m.especie}</p>
           </div>
           </div>
 					</td>
 					<td>
 					<a class="btn btn-secondary" href="RegistrarPreferenciaController?idMascota=${m.id}" role="button"><i class="fa-solid fa-gear"></i>  Preferencias</a> 
+					<a class="btn btn-warning" href="ActualizarMascotaController?idMascota=${m.id}" role="button"><i class="fa-solid fa-id-card"></i>  Actualizar</a> 
 					<a class="btn btn-danger" href="EliminarMascotaController?idMascota=${m.id}" role="button"><i class="fa-solid fa-trash"></i> Eliminar</a> 
 					<td>
 					<a class="btn btn-info" href="ListarProspectosController?idMascota=${m.id}" role="button"><i class="fa-solid fa-paw"></i> Ver prospectos</a> </td>

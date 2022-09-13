@@ -15,7 +15,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.eclipse.persistence.annotations.CascadeOnDelete;
+
 @Entity(name = "Mascota")
+@CascadeOnDelete
 public class Mascota  implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
