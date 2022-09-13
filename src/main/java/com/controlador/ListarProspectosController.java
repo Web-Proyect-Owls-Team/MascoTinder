@@ -54,12 +54,8 @@ public class ListarProspectosController extends HttpServlet {
 			ArrayList<Mascota> prospectos = (ArrayList<Mascota>) DAOFactory.getFactory().getMascotaDAO()
 					.getProspectos(miMascota);
 
-			if (prospectos.size() > 0) {
-				int index = (int) (Math.random() * prospectos.size());
-				request.setAttribute("prospecto", prospectos.get(index));
+				request.setAttribute("prospectos", prospectos);
 				request.setAttribute("miMascota", miMascota);
-			}
-
 		}
 
 		// Dispatch

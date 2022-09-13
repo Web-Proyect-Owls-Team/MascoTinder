@@ -31,7 +31,7 @@
 				</div>
 				<div class="d-flex justify-content-center form_container">
 				
-					<form method="post" action="LoginController">
+					<form method="post" action="LoginController" class ="needs-validation">
 									<div>
 				<h1>MascoTinder</h1>
 				</div>
